@@ -40,7 +40,7 @@ st.write ("""
 
 etap = st.segmented_control(
     "Etappes",
-    options=['1','2','3','4'],
+    options=[str(i) for i in range(1, 22)],
     # format_func=lambda option: option_map[option],
     selection_mode="single",
 )
@@ -51,11 +51,13 @@ st.write ("""
           # Teams
           """
           )
-
+buff0,col1, buff1,col2= st.columns([.1,5,3,5])
 
 teams = dfTeams.columns
-
-radioTeam = st.selectbox('Select team:', teams)
+radioTeam = col1.selectbox('Select team:', teams)
 dfTeam = dfTeams[[radioTeam]]
 
-st.table(dfTeam)
+col2.table(dfTeam)
+
+teamLogo = Image.open(radioTeam + ".png")
+col1.image(teamLogo, use_column_width=True)
