@@ -34,7 +34,7 @@ st.write ("""
           )
 
 
-teams = dfTeams.columns()
+teams = dfTeams.columns
 
 
 radioTeam = st.selectbox('Select team:', teams)
