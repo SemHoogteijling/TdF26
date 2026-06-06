@@ -33,31 +33,40 @@ header = Image.open(r"header.png")
 st.image(header, use_column_width=True)
 
 
-st.write ("""
-          # Etappes
-          """
-          )
+tab1, tab2, tab3 = st.tabs(["Stand", "Etappes", "Teams"])
 
-etap = st.segmented_control(
-    "Etappes",
-    options=[str(i) for i in range(1, 22)],
-    # format_func=lambda option: option_map[option],
-    selection_mode="single",
-)
+with tab1:
+  st.write ("""
+            # Stand
+            """
+            )  
+    
+with tab2:    
+    st.write ("""
+              # Etappes
+              """
+              )
+    
+    etap = st.segmented_control(
+        "Etappes",
+        options=[str(i) for i in range(1, 22)],
+        # format_func=lambda option: option_map[option],
+        selection_mode="single",
+    )
 
 
-
-st.write ("""
-          # Teams
-          """
-          )
-buff0,col1, buff1,col2= st.columns([.1,5,3,5])
-
-teams = dfTeams.columns
-radioTeam = col1.selectbox('Select team:', teams)
-dfTeam = dfTeams[[radioTeam]]
-
-col1.table(dfTeam)
-
-teamLogo = Image.open(radioTeam + ".png")
-col2.image(teamLogo, use_column_width=True)
+with tab3:
+    st.write ("""
+              # Teams
+              """
+              )
+    buff0,col1, buff1,col2= st.columns([.1,5,3,5])
+    
+    teams = dfTeams.columns
+    radioTeam = col1.selectbox('Select team:', teams)
+    dfTeam = dfTeams[[radioTeam]]
+    
+    col2.table(dfTeam)
+    
+    teamLogo = Image.open(radioTeam + ".png")
+    col1.image(teamLogo, use_column_width=True)
