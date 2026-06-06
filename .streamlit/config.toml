@@ -1,6 +1,5 @@
 [theme]
-primaryColor="#FF4B4B"          # Kleur van actieve tabs, sliders en knoppen
-backgroundColor="#FFFFFF"       # De hoofdachgtergrond van je app
-secondaryBackgroundColor="#F0F2F6" # Achtergrond van de sidebar en input-velden
-textColor="#31333F"             # Standaard tekstkleur
-font="sans serif"               # Lettertype (sans serif, serif, of monospace)
+primaryColor="#FFCC00"          # Warm geel voor knoppen/accenten
+backgroundColor="#FEF9E7"       # Zachte, pastelgele achtergrond voor de app
+secondaryBackgroundColor="#FDF2E9" # Iets donkerder geel/beige voor de sidebar
+textColor="#2C3E50"             # Donkere tekst (beter leesbaar op geel)
