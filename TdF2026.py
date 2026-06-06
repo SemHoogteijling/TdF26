@@ -13,7 +13,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import copy
 import time
-import Image
+from PIL import Image
 
 st.set_page_config(layout="wide")
 
