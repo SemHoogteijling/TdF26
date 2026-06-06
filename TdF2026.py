@@ -57,7 +57,7 @@ teams = dfTeams.columns
 radioTeam = col1.selectbox('Select team:', teams)
 dfTeam = dfTeams[[radioTeam]]
 
-col2.table(dfTeam)
+col1.table(dfTeam)
 
 teamLogo = Image.open(radioTeam + ".png")
-col1.image(teamLogo, use_column_width=True)
+col2.image(teamLogo, use_column_width=True)
