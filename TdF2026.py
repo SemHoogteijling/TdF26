@@ -13,6 +13,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import copy
 import time
+import Image
 
 st.set_page_config(layout="wide")
 
@@ -28,8 +29,14 @@ url = f"https://docs.google.com/spreadsheets/d/{SHEET_ID}/export?format=csv&gid=
 dfTeams = pd.read_csv(url)
 
 #%%
+header = Image.open(r"header.png")
+st.image(header, use_column_width=True)
+
+
+
+
 st.write ("""
-          # KNF TOUR 2026
+          # Teams
           """
           )
 
