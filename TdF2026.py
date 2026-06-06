@@ -33,6 +33,18 @@ header = Image.open(r"header.png")
 st.image(header, use_column_width=True)
 
 
+st.write ("""
+          # Etappes
+          """
+          )
+
+etap = st.segmented_control(
+    "Etappes",
+    options=['1','2','3','4'],
+    # format_func=lambda option: option_map[option],
+    selection_mode="single",
+)
+
 
 
 st.write ("""
@@ -42,7 +54,6 @@ st.write ("""
 
 
 teams = dfTeams.columns
-
 
 radioTeam = st.selectbox('Select team:', teams)
 dfTeam = dfTeams[[radioTeam]]
