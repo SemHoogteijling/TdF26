@@ -25,8 +25,11 @@ plt.rcParams['svg.fonttype'] = 'none'
 
 SHEET_ID = "17zM7Xsnej3p8JjcKzxmsmH-hdsbsWx4HsmzzN8BXNVM"
 url = f"https://docs.google.com/spreadsheets/d/{SHEET_ID}/export?format=csv&gid=0"
-
 dfTeams = pd.read_csv(url)
+
+url = f"https://docs.google.com/spreadsheets/d/{SHEET_ID}/export?format=csv&gid=592005"
+dfTekst = pd.read_csv(url)
+
 
 #%%
 buff0,col1, buff1,col2= st.columns([.1,1,.5,8])
@@ -36,6 +39,9 @@ logo = Image.open(r"logo.png")
 col1.image(logo, use_column_width=True)
 col2.image(header, use_column_width=True)
 
+    st.write (
+              dfTekst['Teksten'].iloc[0]             
+              )
 
 tab1, tab2, tab3 = st.tabs(["Stand", "Etappes", "Teams"])
 
