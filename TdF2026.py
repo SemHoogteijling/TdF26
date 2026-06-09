@@ -66,7 +66,7 @@ with tab2:
               Nog geen uitslagen bekend van deze etappe.
               """
               )
-
+    st.write(etap)
 
 with tab3:
     st.write ("""
