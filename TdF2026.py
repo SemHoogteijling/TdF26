@@ -29,8 +29,12 @@ url = f"https://docs.google.com/spreadsheets/d/{SHEET_ID}/export?format=csv&gid=
 dfTeams = pd.read_csv(url)
 
 #%%
+buff0,col1, buff1,col2= st.columns([.1,3,.5,7])
 header = Image.open(r"header.png")
-st.image(header, use_column_width=True)
+logo = Image.open(r"logo.png")
+
+col1.image(logo, use_column_width=True)
+col2.image(header, use_column_width=True)
 
 
 tab1, tab2, tab3 = st.tabs(["Stand", "Etappes", "Teams"])
