@@ -62,10 +62,6 @@ with tab2:
         selection_mode="single",
     )
 
-    st.write ("""
-              Nog geen uitslagen bekend van deze etappe.
-              """
-              )
     st.write(etap)
 
 with tab3:
