@@ -62,7 +62,9 @@ with tab2:
         selection_mode="single",
     )
 
-    st.write(etap)
+    if etap is not None:
+        etap_int = int(etap)
+        st.write('Etappe ' + etap + ':' + dfTeksten[dfTeksten['Etappe_nr']==etap_int].iloc[0])
 
 with tab3:
     st.write ("""
