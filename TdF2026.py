@@ -64,7 +64,7 @@ with tab2:
 
     if etap is not None:
         etap_int = int(etap)
-        st.write('Etappe ' + etap + ':' + dfTeksten[dfTeksten['Etappe_nr']==etap_int].iloc[0])
+        st.write('Etappe ' + etap + ':' + dfTekst[dfTekst['Etappe_nr']==etap_int].iloc[0])
 
 with tab3:
     st.write ("""
