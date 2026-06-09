@@ -29,7 +29,7 @@ url = f"https://docs.google.com/spreadsheets/d/{SHEET_ID}/export?format=csv&gid=
 dfTeams = pd.read_csv(url)
 
 #%%
-buff0,col1, buff1,col2= st.columns([.1,1,.5,7])
+buff0,col1, buff1,col2= st.columns([.1,1,.5,8])
 header = Image.open(r"header.png")
 logo = Image.open(r"logo.png")
 
@@ -57,6 +57,11 @@ with tab2:
         # format_func=lambda option: option_map[option],
         selection_mode="single",
     )
+
+    st.write ("""
+              Nog geen uitslagen bekend van deze etappe.
+              """
+              )
 
 
 with tab3:
