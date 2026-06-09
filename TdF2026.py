@@ -39,9 +39,7 @@ logo = Image.open(r"logo.png")
 col1.image(logo, use_column_width=True)
 col2.image(header, use_column_width=True)
 
-    st.write (
-              dfTekst['Teksten'].iloc[0]             
-              )
+st.write (dfTekst['Teksten'].iloc[0])
 
 tab1, tab2, tab3 = st.tabs(["Stand", "Etappes", "Teams"])
 
