@@ -78,6 +78,9 @@ with tab3:
     dfTeam = dfTeams[[radioTeam]]
     
     col2.table(dfTeam)
-    
-    teamLogo = Image.open(radioTeam + ".png")
-    col1.image(teamLogo, use_column_width=True)
+
+    try:
+        teamLogo = Image.open(radioTeam + ".png")
+        col1.image(teamLogo, use_column_width=True)
+    except:
+        col1.write('No team logo available yet')
