@@ -85,7 +85,7 @@ with tab1:
             st.write(f"**{top3['Totaal']} pt**")
             st.write("</div>", unsafe_allow_html=True)
 
-
+    etappe_kolommen = [col for col in dfEtappesKNF.columns if col not in ['Team', 'Totaal']]
     df_plot = dfEtappesKNF.set_index('Team')[etappe_kolommen]
     df_cumulatief = df_plot.cumsum(axis=1)
     df_grafiek = df_cumulatief.T
