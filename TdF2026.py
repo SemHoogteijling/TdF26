@@ -84,49 +84,14 @@ with tab1:
             st.subheader(f"{top3['Team']}")
             st.write(f"**{top3['Totaal']} pt**")
             st.write("</div>", unsafe_allow_html=True)
-    
-st.write("---")
-st.write("### Scoreverloop per Etappe")
 
-# 1. Pak alle etappe-kolommen (en zorg dat ze als tekst/string worden gelezen)
-etappe_kolommen = [str(col).strip() for col in dfEtappesKNF.columns if str(col).strip() not in ['Team', 'Totaal']]
 
-# 2. Sorteerfunctie voor de etappes
-def robuuste_sorteer_sleutel(val):
-    import re
-    cijfers = re.findall(r'\d+', val)
-    if cijfers:
-        return (0, int(cijfers[0]))  # Cijfers eerst wiskundig ordenen
-    else:
-        return (1, val)              # Tekst (Algemeen klassement) sluit achteraan
+    df_plot = dfEtappesKNF.set_index('Team')[etappe_kolommen]
+    df_cumulatief = df_plot.cumsum(axis=1)
+    df_grafiek = df_cumulatief.T
+    df_grafiek.index = pd.CategoricalIndex(df_grafiek.index,categories=df_grafiek.index,ordered=True)
 
-etappe_kolommen_gesorteerd = sorted(etappe_kolommen, key=robuuste_sorteer_sleutel)
-
-# 3. Bereid dataframe voor
-df_tijdelijk = dfEtappesKNF.copy()
-df_tijdelijk.columns = [str(col).strip() for col in df_tijdelijk.columns]
-
-df_plot = df_tijdelijk.set_index('Team')[etappe_kolommen_gesorteerd]
-df_cumulatief = df_plot.cumsum(axis=1)
-
-# 4. Kantel de tabel
-df_grafiek = df_cumulatief.T
-
-# ==========================================
-# DE OPLOSSING VOOR STREAMLIT:
-# ==========================================
-# Maak van de etappe-index een fysieke kolom genaamd 'Etappe'
-df_grafiek = df_grafiek.reset_index().rename(columns={'index': 'Etappe'})
-
-# Haal alle teamnamen op (dit worden de lijnen op de y-as)
-team_kolommen = [col for col in df_grafiek.columns if col != 'Etappe']
-
-# Dwing Streamlit om de handmatig gesorteerde 'Etappe' kolom te gebruiken voor de x-as
-st.line_chart(
-    data=df_grafiek, 
-    x='Etappe', 
-    y=team_kolommen
-)
+    st.line_chart(df_grafiek)
 
 with tab2:    
     st.write ("""
