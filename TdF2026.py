@@ -46,13 +46,58 @@ st.write (dfTekst['Teksten'].iloc[0])
 tab1, tab2, tab3, tab4 = st.tabs(["Stand", "Etappes", "Teams","Uitleg"])
 
 with tab1:
-    st.write ("""
-            # Stand
-            """
-            )  
     
-    tab = dfEtappesKNF[['Team','Totaal']].sort_values(by='Totaal',ascending=False)
-    st.table(tab,hide_index=True)
+    tab = dfEtappesKNF[['Team','Totaal']].sort_values(by='Totaal', ascending=False)
+
+    # Splits de data op in Top 3 en de rest
+    if len(tab) >= 3:
+        top1 = tab.iloc[0]
+        top2 = tab.iloc[1]
+        top3 = tab.iloc[2]
+        rest_van_stand = tab.iloc[3:]
+    else:
+        rest_van_stand = tab
+    
+    # --- EREPODIUM BOUWEN ---
+    # We maken 3 kolommen: Links (Nr 2), Midden (Nr 1), Rechts (Nr 3)
+    col2, col1, col3 = st.columns(3)
+    
+    with col2:
+        st.write("<div style='text-align: center; margin-top: 25px;'>", unsafe_allow_html=True)
+        st.markdown("🥈 **2e Plaats**")
+        st.subheader(f"{top2['Team']}")
+        st.write(f"**{top2['Totaal']} pt**")
+        st.write("</div>", unsafe_allow_html=True)
+    
+    with col1:
+        # De nummer 1 krijgt extra grote tekst en een gouden tintje
+        st.write("<div style='text-align: center; background-color: #fcf4d9; padding: 15px; border-radius: 10px; border: 2px solid #f3da82;'>", unsafe_allow_html=True)
+        st.markdown("👑 **1e Plaats**")
+        st.title(f"{top1['Team']}")
+        st.subheader(f"{top1['Totaal']} pt")
+        st.write("</div>", unsafe_allow_html=True)
+    
+    with col3:
+        st.write("<div style='text-align: center; margin-top: 40px;'>", unsafe_allow_html=True)
+        st.markdown("🥉 **3e Plaats**")
+        st.subheader(f"{top3['Team']}")
+        st.write(f"**{top3['Totaal']} pt**")
+        st.write("</div>", unsafe_allow_html=True)
+    
+    st.write("---") # Visueel lijntje tussen top 3 en de rest
+    
+    # --- DE REST VAN DE STAND ---
+    st.write("### Volledige Stand")
+    if not rest_van_stand.empty:
+        st.table(rest_van_stand, hide_index=True)
+        
+        st.write ("""
+                # Stand
+                """
+                )  
+        
+        tab = dfEtappesKNF[['Team','Totaal']].sort_values(by='Totaal',ascending=False)
+        st.table(tab,hide_index=True)
 
 with tab2:    
     st.write ("""
