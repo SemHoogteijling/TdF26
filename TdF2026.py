@@ -65,7 +65,6 @@ with tab1:
     
     with col1:
         if top1 is not None:
-            st.write("<div style='text-align: center; background-color: #fcf4d9; padding: 15px; border-radius: 10px; border: 2px solid #f3da82;'>", unsafe_allow_html=True)
             st.markdown("🥇 **1e Plaats**")
             st.subheader(f"{top1['Team']}")
             st.write(f"**{top1['Totaal']} pt**")
@@ -73,7 +72,6 @@ with tab1:
     
     with col2:
         if top2 is not None:
-            st.write("<div style='text-align: center; background-color: #f0f0f0; padding: 15px; border-radius: 10px; border: 2px solid #cccccc;'>", unsafe_allow_html=True)
             st.markdown("🥈 **2e Plaats**")
             st.subheader(f"{top2['Team']}")
             st.write(f"**{top2['Totaal']} pt**")
@@ -81,14 +79,12 @@ with tab1:
     
     with col3:
         if top3 is not None:
-            st.write("<div style='text-align: center; background-color: #f7eff0; padding: 15px; border-radius: 10px; border: 2px solid #e0b8b1;'>", unsafe_allow_html=True)
             st.markdown("🥉 **3e Plaats**")
             st.subheader(f"{top3['Team']}")
             st.write(f"**{top3['Totaal']} pt**")
             st.write("</div>", unsafe_allow_html=True)
     
     st.write("---")
-    # --- DE VOLLEDIGE TABEL ---
     st.write("### Volledige Stand")
     st.table(tab, hide_index=True)
 
