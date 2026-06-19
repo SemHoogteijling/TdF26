@@ -43,7 +43,7 @@ col2.image(header, use_column_width=True)
 
 st.write (dfTekst['Teksten'].iloc[0])
 
-tab1, tab2, tab3 = st.tabs(["Stand", "Etappes", "Teams"])
+tab1, tab2, tab3, tab4 = st.tabs(["Stand", "Etappes", "Teams","Uitleg"])
 
 with tab1:
   st.write ("""
@@ -90,3 +90,25 @@ with tab3:
         col1.image(teamLogo, use_column_width=True)
     except:
         col1.write('No team logo available yet')
+
+
+with tab4:
+    st.write("""
+    We gaan terug naar de basis: je mag 7 renners kiezen die punten opleveren in de dag top-10:
+    
+    * **nr. 1** - 12 punten
+    * **nr. 2** - 10
+    * **nr. 3** - 8
+    * **nr. 4** - 7
+    * **nr. 5** - 6
+    * **nr. 6** - 5
+    * **nr. 7** - 4
+    * **nr. 8** - 3
+    * **nr. 9** - 2
+    * **nr. 10** - 1
+    
+    En het eindklassement van de gele trui nr 1 tot nr 10:  
+    **45 - 37 - 29 - 25 - 21 - 17 - 13 - 9 - 5 - 1**
+    
+    Het thema dit jaar is natuurlijk **‘The Youth Takes Over’** (zou Frankrijk echt weer een Tourheld krijgen?). Daarom verdient elke renner in je team die meedoet met het jongerenklassement (<= 25 jaar), **5 bonuspunten** als hij zich in een top 10 rijdt.
+    """)
