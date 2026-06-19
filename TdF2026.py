@@ -51,6 +51,9 @@ with tab1:
             """
             )  
     
+    tab = dfEtappesKNF[['Team','Totaal']].sort_values(by='Totaal',ascending=False)
+    st.table(tab,hide_index=True)
+
 with tab2:    
     st.write ("""
               # Etappes
