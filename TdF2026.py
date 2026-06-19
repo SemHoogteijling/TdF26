@@ -94,7 +94,7 @@ with tab1:
 
     df_tijdelijk = dfEtappesKNF.copy()
     df_tijdelijk.columns = [str(col).strip() for col in df_tijdelijk.columns]
-    df_plot = df_tijdelijk.set_index('Team')[etappe_kolommen_gesorteerd]
+    df_plot = df_tijdelijk.set_index('Team')
     gespeelde_etappes = [col for col in etappe_kolommen_gesorteerd if df_plot[col].sum() > 0]
     df_plot = df_plot[gespeelde_etappes]
     df_cumulatief = df_plot.cumsum(axis=1)
