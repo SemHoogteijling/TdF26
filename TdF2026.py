@@ -92,14 +92,26 @@ with tab1:
     st.write("---")
     st.write("### Scoreverloop per Etappe")
     
+    # 1. Pak alle etappe-kolommen
     etappe_kolommen = [col for col in dfEtappesKNF.columns if col not in ['Team', 'Totaal']]
-    df_plot = dfEtappesKNF.set_index('Team')[etappe_kolommen]
-    df_cumulatief = df_plot.cumsum(axis=1)
-    df_grafiek = df_cumulatief.T
-    def geef_etappe_nummer(val):
+    
+    # 2. Sorteer de kolommenlijst zélf eerst numeriek (zodat 2 voor 10 komt!)
+    def sorteer_sleutel(val):
         cijfers = re.findall(r'\d+', str(val))
         return int(cijfers[0]) if cijfers else 999
-    df_grafiek = df_grafiek.sort_index(key=lambda x: x.map(geef_etappe_nummer))
+    
+    etappe_kolommen_gesorteerd = sorted(etappe_kolommen, key=sorteer_sleutel)
+    
+    # 3. Zet 'Team' als index en selecteer de kolommen in de JUISTE volgorde
+    df_plot = dfEtappesKNF.set_index('Team')[etappe_kolommen_gesorteerd]
+    
+    # 4. Bereken nu de cumulatieve som (dit gaat nu chronologisch van etappe 1 naar 2 naar 3...)
+    df_cumulatief = df_plot.cumsum(axis=1)
+    
+    # 5. Kantel de tabel voor de grafiek
+    df_grafiek = df_cumulatief.T
+    
+    # 6. Toon de strakke lijnengrafiek
     st.line_chart(df_grafiek)
 
 with tab2:    
