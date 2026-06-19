@@ -46,7 +46,7 @@ st.write (dfTekst['Teksten'].iloc[0])
 tab1, tab2, tab3, tab4 = st.tabs(["Stand", "Etappes", "Teams","Uitleg"])
 
 with tab1:
-  st.write ("""
+    st.write ("""
             # Stand
             """
             )  
