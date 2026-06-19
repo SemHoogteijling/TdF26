@@ -109,6 +109,14 @@ with tab2:
         tab.rename(columns={etap: 'Punten'}, inplace=True)
         st.table(tab,hide_index=True)
 
+# --- CUMULATIEVE PLOT ---
+st.write("### Scoreverloop per Etappe")
+
+etappe_kolommen = [col for col in dfEtappesKNF.columns if col not in ['Team', 'Totaal']]
+df_plot = dfEtappesKNF.set_index('Team')[etappe_kolommen]
+df_cumulatief = df_plot.cumsum(axis=1)
+df_grafiek = df_cumulatief.T
+st.line_chart(df_grafiek)
 
 with tab3:
     st.write ("""
