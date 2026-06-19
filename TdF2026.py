@@ -24,12 +24,14 @@ if 'df_store_temp' not in st.session_state:
 plt.rcParams['svg.fonttype'] = 'none'
 
 SHEET_ID = "17zM7Xsnej3p8JjcKzxmsmH-hdsbsWx4HsmzzN8BXNVM"
-url = f"https://docs.google.com/spreadsheets/d/{SHEET_ID}/export?format=csv&gid=0"
+url = f"https://docs.google.com/spreadsheets/d/{SHEET_ID}/export?format=csv&gid=638470902"
 dfTeams = pd.read_csv(url)
 
 url = f"https://docs.google.com/spreadsheets/d/{SHEET_ID}/export?format=csv&gid=592005"
 dfTekst = pd.read_csv(url)
 
+url = f"https://docs.google.com/spreadsheets/d/{SHEET_ID}/export?format=csv&gid=1587473803"
+dfEtappesKNF = pd.read_csv(url)
 
 #%%
 buff0,col1, buff1,col2= st.columns([.1,1,.5,8])
@@ -66,6 +68,9 @@ with tab2:
         etap_int = int(etap)
         st.write('## Etappe ' + etap + ': ' + dfTekst[dfTekst['Etappe_nr']==etap_int]['Etappe_naam'].iloc[0])
         st.write(dfTekst[dfTekst['Etappe_nr']==etap_int]['Etappes_tekst'].iloc[0])
+        tab = dfEtappesKNF[['Team',etap]].sort_values(by=etap)
+        st.table(tab)
+
 
 with tab3:
     st.write ("""
