@@ -88,6 +88,18 @@ with tab1:
     st.write("### Volledige Stand")
     st.table(tab, hide_index=True)
 
+    st.write("---")
+    st.write("### Scoreverloop per Etappe")
+    
+    etappe_kolommen = [col for col in dfEtappesKNF.columns if col not in ['Team', 'Totaal']]
+    df_plot = dfEtappesKNF.set_index('Team')[etappe_kolommen]
+    df_cumulatief = df_plot.cumsum(axis=1)
+    df_grafiek = df_cumulatief.T
+    df_grafiek.index = pd.to_numeric(df_grafiek.index, errors='ignore')
+    df_grafiek = df_grafiek.sort_index()
+    df_grafiek.index = df_grafiek.index.astype(str)
+    st.line_chart(df_grafiek)
+
 with tab2:    
     st.write ("""
               # Etappes
@@ -109,14 +121,6 @@ with tab2:
         tab.rename(columns={etap: 'Punten'}, inplace=True)
         st.table(tab,hide_index=True)
 
-# --- CUMULATIEVE PLOT ---
-st.write("### Scoreverloop per Etappe")
-
-etappe_kolommen = [col for col in dfEtappesKNF.columns if col not in ['Team', 'Totaal']]
-df_plot = dfEtappesKNF.set_index('Team')[etappe_kolommen]
-df_cumulatief = df_plot.cumsum(axis=1)
-df_grafiek = df_cumulatief.T
-st.line_chart(df_grafiek)
 
 with tab3:
     st.write ("""
