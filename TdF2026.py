@@ -125,7 +125,7 @@ with tab2:
 
 
         tab = dfEtappesUitslagen.iloc[:10, (etap_int-1)*4:(etap_int)*4]
-        if not tab[kolom_naam].isna().any():
+        if not tab['Etappe'+etap].isna().any():
             st.write("---")
             st.write("### Uitslag Etappe")
             tab = dfEtappesUitslagen.iloc[:10, (etap_int-1)*4:(etap_int)*4]
