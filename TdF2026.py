@@ -122,20 +122,23 @@ with tab2:
         etap_int = int(etap)
         st.write('## Etappe ' + etap + ': ' + dfTekst[dfTekst['Etappe_nr']==etap_int]['Etappe_naam'].iloc[0])
         st.write(dfTekst[dfTekst['Etappe_nr']==etap_int]['Etappes_tekst'].iloc[0])
-        
-        st.write("---")
-        st.write("### Uitslag Etappe")
-        tab = dfEtappesUitslagen.iloc[:10, (etap_int-1)*4:(etap_int)*4]
-        tab.columns = ['Etappe '+etap,'Punten','Jongeren Bonus', 'Totaal']
-        tab['Punten'] = tab['Punten'].astype(int)
-        tab['Jongeren Bonus'] = tab['Jongeren Bonus'].astype(int)
-        tab['Totaal'] = tab['Totaal'].astype(int)
-        st.table(tab,hide_index=True)
 
-        st.write("### Uitslag KNF Teams")
-        tab = dfEtappesKNF[['Team',etap]].sort_values(by=etap,ascending=False)
-        tab.rename(columns={etap: 'Punten'}, inplace=True)
-        st.table(tab,hide_index=True)
+
+        tab = dfEtappesUitslagen.iloc[:10, (etap_int-1)*4:(etap_int)*4]
+        if not tab[kolom_naam].isna().any():
+            st.write("---")
+            st.write("### Uitslag Etappe")
+            tab = dfEtappesUitslagen.iloc[:10, (etap_int-1)*4:(etap_int)*4]
+            tab.columns = ['Etappe '+etap,'Punten','Jongeren Bonus', 'Totaal']
+            tab['Punten'] = tab['Punten'].astype(int)
+            tab['Jongeren Bonus'] = tab['Jongeren Bonus'].astype(int)
+            tab['Totaal'] = tab['Totaal'].astype(int)
+            st.table(tab,hide_index=True)
+    
+            st.write("### Uitslag KNF Teams")
+            tab = dfEtappesKNF[['Team',etap]].sort_values(by=etap,ascending=False)
+            tab.rename(columns={etap: 'Punten'}, inplace=True)
+            st.table(tab,hide_index=True)
 
 
 with tab3:
