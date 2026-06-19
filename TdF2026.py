@@ -69,7 +69,7 @@ with tab2:
         st.write('## Etappe ' + etap + ': ' + dfTekst[dfTekst['Etappe_nr']==etap_int]['Etappe_naam'].iloc[0])
         st.write(dfTekst[dfTekst['Etappe_nr']==etap_int]['Etappes_tekst'].iloc[0])
         tab = dfEtappesKNF[['Team',etap]].sort_values(by=etap,ascending=False)
-        st.table(tab)
+        st.table(tab.style.hide(axis='index'))
 
 
 with tab3:
