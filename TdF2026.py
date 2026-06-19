@@ -14,6 +14,7 @@ import matplotlib.pyplot as plt
 import copy
 import time
 from PIL import Image
+import re
 
 st.set_page_config(layout="wide")
 
@@ -95,9 +96,10 @@ with tab1:
     df_plot = dfEtappesKNF.set_index('Team')[etappe_kolommen]
     df_cumulatief = df_plot.cumsum(axis=1)
     df_grafiek = df_cumulatief.T
-    df_grafiek.index = pd.to_numeric(df_grafiek.index, errors='ignore')
-    df_grafiek = df_grafiek.sort_index()
-    df_grafiek.index = df_grafiek.index.astype(str)
+    def geef_etappe_nummer(val):
+        cijfers = re.findall(r'\d+', str(val))
+    return int(cijfers[0]) if cijfers else 999
+    df_grafiek = df_grafiek.sort_index(key=lambda x: x.map(geef_etappe_nummer))
     st.line_chart(df_grafiek)
 
 with tab2:    
