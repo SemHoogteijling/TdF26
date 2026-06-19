@@ -91,8 +91,12 @@ with tab1:
 
     st.write("---")
     st.write("### Scoreverloop per Etappe")
-    etappe_kolommen = [col for col in dfEtappesKNF.columns if col not in ['Team', 'Totaal']]
-    df_plot = dfEtappesKNF.set_index('Team')[etappe_kolommen]
+
+    df_tijdelijk = dfEtappesKNF.copy()
+    df_tijdelijk.columns = [str(col).strip() for col in df_tijdelijk.columns]
+    df_plot = df_tijdelijk.set_index('Team')[etappe_kolommen_gesorteerd]
+    gespeelde_etappes = [col for col in etappe_kolommen_gesorteerd if df_plot[col].sum() > 0]
+    df_plot = df_plot[gespeelde_etappes]
     df_cumulatief = df_plot.cumsum(axis=1)
     df_grafiek = df_cumulatief.T
     df_grafiek.index = pd.CategoricalIndex(df_grafiek.index,categories=df_grafiek.index,ordered=True)
