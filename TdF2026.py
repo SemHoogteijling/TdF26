@@ -98,7 +98,7 @@ with tab1:
     df_grafiek = df_cumulatief.T
     def geef_etappe_nummer(val):
         cijfers = re.findall(r'\d+', str(val))
-    return int(cijfers[0]) if cijfers else 999
+        return int(cijfers[0]) if cijfers else 999
     df_grafiek = df_grafiek.sort_index(key=lambda x: x.map(geef_etappe_nummer))
     st.line_chart(df_grafiek)
 
