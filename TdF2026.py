@@ -131,7 +131,7 @@ with tab2:
             tab = dfEtappesUitslagen.iloc[:10, (etap_int-1)*4:(etap_int)*4]
             tab.columns = ['Etappe '+etap,'Punten','Jongeren Bonus', 'Totaal']
             tab['Punten'] = tab['Punten'].astype(int)
-            tab['Jongeren Bonus'] = tab['Jongeren Bonus'].astype(int)
+            tab['Bonus jongerenklassement'] = tab['Bonus jongerenklassement'].astype(int)
             tab['Totaal'] = tab['Totaal'].astype(int)
             st.table(tab,hide_index=True)
     
