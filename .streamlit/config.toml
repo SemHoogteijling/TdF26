@@ -1,5 +1,5 @@
 [theme]
-primaryColor="#FFCC00"          # Warm geel voor knoppen/accenten
-backgroundColor="#FEF9E7"       # Zachte, pastelgele achtergrond voor de app
-secondaryBackgroundColor="#FDF2E9" # Iets donkerder geel/beige voor de sidebar
-textColor="#2C3E50"             # Donkere tekst (beter leesbaar op geel)
+primaryColor="#3498DB"           # Fris hemelsblauw voor knoppen/accenten
+backgroundColor="#EBF5FB"        # Zachte, pastel lichtblauwe achtergrond voor de app
+secondaryBackgroundColor="#D6EAF8" # Iets donkerder, koel blauw voor de sidebar
+textColor="#1C2833"              # Zeer donkerblauw/antraciet (voor optimaal contrast en leesbaarheid)
