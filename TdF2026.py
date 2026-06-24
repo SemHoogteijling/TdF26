@@ -126,7 +126,9 @@ with tab2:
 
         tab = dfEtappesUitslagen.iloc[:10, (etap_int-1)*4:(etap_int)*4]
         if not tab['Etappe'+etap].isna().any():
-            st.write(dfTekst[dfTekst['Etappe_nr']==etap_int]['Etappes_tekst'].iloc[0])
+            etappe_tekst = dfTekst[dfTekst['Etappe_nr']==etap_int]['Etappes_tekst'].iloc[0]
+            if isinstance(etappe_tekst, str):
+                st.write(etappe_tekst)
             st.write("---")
             st.write("### Uitslag Etappe")
             tab = dfEtappesUitslagen.iloc[:10, (etap_int-1)*4:(etap_int)*4]
