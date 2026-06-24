@@ -40,7 +40,7 @@ dfEtappesUitslagen = pd.read_csv(url)
 #%%
 buff0,col1, buff1,col2= st.columns([.1,1,.5,8])
 header = Image.open(r"header.png")
-logo = Image.open(r"logo.png")
+logo = Image.open(r"logo2.png")
 
 col1.image(logo, use_column_width=True)
 col2.image(header, use_column_width=True)
