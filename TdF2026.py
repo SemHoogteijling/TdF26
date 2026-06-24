@@ -121,11 +121,12 @@ with tab2:
     if etap is not None:
         etap_int = int(etap)
         st.write('## Etappe ' + etap + ': ' + dfTekst[dfTekst['Etappe_nr']==etap_int]['Etappe_naam'].iloc[0])
-        st.write(dfTekst[dfTekst['Etappe_nr']==etap_int]['Etappes_tekst'].iloc[0])
+        
 
 
         tab = dfEtappesUitslagen.iloc[:10, (etap_int-1)*4:(etap_int)*4]
         if not tab['Etappe'+etap].isna().any():
+            st.write(dfTekst[dfTekst['Etappe_nr']==etap_int]['Etappes_tekst'].iloc[0])
             st.write("---")
             st.write("### Uitslag Etappe")
             tab = dfEtappesUitslagen.iloc[:10, (etap_int-1)*4:(etap_int)*4]
@@ -139,6 +140,8 @@ with tab2:
             tab = dfEtappesKNF[['Team',etap]].sort_values(by=etap,ascending=False)
             tab.rename(columns={etap: 'Punten'}, inplace=True)
             st.table(tab,hide_index=True)
+        else:
+            st.write('Deze etappe is nog niet gereden')
 
 
 with tab3:
