@@ -7,3 +7,5 @@ plotly
 seaborn
 lifelines
 openpyxl
+io
+PIL
