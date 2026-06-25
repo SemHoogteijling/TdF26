@@ -14,6 +14,7 @@ import matplotlib.pyplot as plt
 import copy
 import time
 from PIL import Image
+from io import BytesIO
 import re
 
 st.set_page_config(layout="wide")
