@@ -38,6 +38,9 @@ dfEtappesKNF = pd.read_csv(url)
 url = f"https://docs.google.com/spreadsheets/d/{SHEET_ID}/export?format=csv&gid=450303227"
 dfEtappesUitslagen = pd.read_csv(url)
 
+url = f"https://docs.google.com/spreadsheets/d/{SHEET_ID}/export?format=csv&gid=826559667"
+dfLogos = pd.read_csv(url)
+
 #%%
 buff0,col1, buff1,col2= st.columns([.1,1,.5,8])
 header = Image.open(r"logo2.png")
@@ -152,6 +155,14 @@ with tab3:
               # Teams
               """
               )
+
+    fileID = dfLogos[dfLogos['Team']=='Algemeen']['fileID'].iloc[0]
+    url = f"https://docs.google.com/uc?export=download&id={fileID}"
+    response = requests.get(url)
+    if response.status_code == 200:
+        img = Image.open(BytesIO(response.content))
+        st.image(img)
+    
     buff0,col1, buff1,col2= st.columns([.1,5,3,5])
     
     teams = dfTeams.columns
