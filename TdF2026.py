@@ -16,6 +16,7 @@ import time
 from PIL import Image
 from io import BytesIO
 import re
+import requests
 
 st.set_page_config(layout="wide")
 
