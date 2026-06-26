@@ -187,20 +187,19 @@ with tab3:
         st.image(img)
     
     buff0,col1, buff1,col2= st.columns([.1,5,1.5,5])
-    
-    teams = dfTeams.columns
-    radioTeam = col1.selectbox('Select team:', teams)
-    dfTeam = dfTeams[[radioTeam]]
-    
-    col2.table(dfTeam)
 
+    with col1:
+    teams = dfTeams.columns
+    radioTeam = st.selectbox('Select team:', teams)
+    dfTeam = dfTeams[[radioTeam]]
     try:
         teamLogo = Image.open(radioTeam + ".png")
         links, midden, rechts = st.columns([1, 2, 1])
         midden.image(teamLogo, use_column_width=True)
     except:
-        col1.write('No team logo available yet')
-
+        st.write('No team logo available yet')
+        
+    col2.table(dfTeam)
 
 with tab4:
     st.write("""
