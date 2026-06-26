@@ -147,7 +147,7 @@ with tab2:
 
     if etap is not None:
         etap_int = int(etap)
-        st.write('## Etappe ' + etap + ': ' + dfTekst[dfTekst['Etappe_nr']==etap_int]['Etappe_naam'].iloc[0])
+        st.write('## Etappe ' + etap + ': ' + dfTekst[dfTekst['Etappe_nr']==etap_int]['Etappe_naam'].iloc[0] + ' ' + dfTekst[dfTekst['Etappe_nr']==etap_int]['Etappe_datum'].iloc[0])
         
 
 
@@ -165,7 +165,7 @@ with tab2:
             tab['Totaal'] = tab['Totaal'].astype(int)
             st.table(tab,hide_index=True)
     
-            st.write("### Uitslag KNF Teams")
+            st.write("### Uitslag KNF Tour Teams")
             tab = dfEtappesKNF[['Team',etap]].sort_values(by=etap,ascending=False)
             tab.rename(columns={etap: 'Punten'}, inplace=True)
             st.table(tab,hide_index=True)
