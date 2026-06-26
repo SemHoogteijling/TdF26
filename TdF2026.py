@@ -91,6 +91,12 @@ with tab1:
             st.subheader(f"{top2['Team']}")
             st.write(f"**{top2['Totaal']} pt**")
             st.write("</div>", unsafe_allow_html=True)
+
+            try:
+                teamLogo = Image.open(top2['Team'] + ".png")
+                col1.image(teamLogo, use_column_width=False)
+            except:
+                col1.write('No team logo available yet')
     
     with col3:
         if top3 is not None:
@@ -98,6 +104,13 @@ with tab1:
             st.subheader(f"{top3['Team']}")
             st.write(f"**{top3['Totaal']} pt**")
             st.write("</div>", unsafe_allow_html=True)
+
+            try:
+                teamLogo = Image.open(top3['Team'] + ".png")
+                col1.image(teamLogo, use_column_width=False)
+            except:
+                col1.write('No team logo available yet')
+                
 
     st.write("---") # Visueel lijntje tussen de kaarten en de tabel
     st.write("### Volledige Stand")
