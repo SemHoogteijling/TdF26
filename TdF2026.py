@@ -186,7 +186,7 @@ with tab3:
         img = Image.open(BytesIO(response.content))
         st.image(img)
     
-    buff0,col1, buff1,col2= st.columns([.1,5,3,5])
+    buff0,col1, buff1,col2= st.columns([.1,5,1.5,5])
     
     teams = dfTeams.columns
     radioTeam = col1.selectbox('Select team:', teams)
