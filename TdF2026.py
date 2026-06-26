@@ -81,7 +81,8 @@ with tab1:
 
             try:
                 teamLogo = Image.open(top1['Team'] + ".png")
-                col1.image(teamLogo, use_column_width=False)
+                sub_kolom1, sub_kolom2,sub_kolom3 = st.columns(3)
+                sub_kolom2.image(teamLogo, use_container_width=True)
             except:
                 col1.write('No team logo available yet')
     
@@ -94,7 +95,8 @@ with tab1:
 
             try:
                 teamLogo = Image.open(top2['Team'] + ".png")
-                col2.image(teamLogo, use_column_width=False)
+                sub_kolom1, sub_kolom2,sub_kolom3 = st.columns(3)
+                sub_kolom2.image(teamLogo, use_container_width=True)
             except:
                 col2.write('No team logo available yet')
     
@@ -107,7 +109,8 @@ with tab1:
 
             try:
                 teamLogo = Image.open(top3['Team'] + ".png")
-                col3.image(teamLogo, use_column_width=False)
+                sub_kolom1, sub_kolom2,sub_kolom3 = st.columns(3)
+                sub_kolom2.image(teamLogo, use_container_width=True)
             except:
                 col3.write('No team logo available yet')
                 
