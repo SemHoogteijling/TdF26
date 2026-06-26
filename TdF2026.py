@@ -94,9 +94,9 @@ with tab1:
 
             try:
                 teamLogo = Image.open(top2['Team'] + ".png")
-                col1.image(teamLogo, use_column_width=False)
+                col2.image(teamLogo, use_column_width=False)
             except:
-                col1.write('No team logo available yet')
+                col2.write('No team logo available yet')
     
     with col3:
         if top3 is not None:
@@ -107,9 +107,9 @@ with tab1:
 
             try:
                 teamLogo = Image.open(top3['Team'] + ".png")
-                col1.image(teamLogo, use_column_width=False)
+                col3.image(teamLogo, use_column_width=False)
             except:
-                col1.write('No team logo available yet')
+                col3.write('No team logo available yet')
                 
 
     st.write("---") # Visueel lijntje tussen de kaarten en de tabel
