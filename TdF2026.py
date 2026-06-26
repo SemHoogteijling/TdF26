@@ -161,9 +161,9 @@ with tab2:
                 st.write("### Uitslag Etappe " + etap)
                 tab = dfEtappesUitslagen.iloc[:10, (etap_int-1)*4:(etap_int)*4]
                 tab.columns = ['Etappe '+etap,'Punten','Jongeren Bonus', 'Totaal']
-                tab['Punten'] = tab['Punten'].astype(int)
+                tab['Punten etappe'] = tab['Punten etappe'].astype(int)
                 tab['Jongeren Bonus'] = tab['Jongeren Bonus'].astype('Int64')
-                tab['Totaal'] = tab['Totaal'].astype(int)
+                tab['Punten totaal'] = tab['Punten totaal'].astype(int)
                 tab.insert(0, 'Positie', range(1, len(tab) + 1))
                 st.table(tab,hide_index=True)
             with col2:
