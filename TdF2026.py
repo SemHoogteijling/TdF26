@@ -149,14 +149,15 @@ with tab2:
     if etap is not None:    
         etap_int = int(etap)
         st.write('## Etappe ' + etap + ': ' + dfTekst[dfTekst['Etappe_nr']==etap_int]['Etappe_naam'].iloc[0] + ' ' + dfTekst[dfTekst['Etappe_nr']==etap_int]['Etappe_datum'].iloc[0])
-        col1,col2 = st.columns(2)
-        with col1:  
-            tab = dfEtappesUitslagen.iloc[:10, (etap_int-1)*4:(etap_int)*4]
-            if not tab['Etappe'+etap].isna().any():
-                etappe_tekst = dfTekst[dfTekst['Etappe_nr']==etap_int]['Etappes_tekst'].iloc[0]
-                if isinstance(etappe_tekst, str):
-                    st.write(etappe_tekst)
-                st.write("---")
+        
+        tab = dfEtappesUitslagen.iloc[:10, (etap_int-1)*4:(etap_int)*4]
+        if not tab['Etappe'+etap].isna().any():
+            etappe_tekst = dfTekst[dfTekst['Etappe_nr']==etap_int]['Etappes_tekst'].iloc[0]
+            if isinstance(etappe_tekst, str):
+                st.write(etappe_tekst)
+            st.write("---")
+            col1,col2 = st.columns(2)
+            with col1:                
                 st.write("### Uitslag Etappe " + etap)
                 tab = dfEtappesUitslagen.iloc[:10, (etap_int-1)*4:(etap_int)*4]
                 tab.columns = ['Etappe '+etap,'Punten','Jongeren Bonus', 'Totaal']
@@ -165,12 +166,12 @@ with tab2:
                 tab['Totaal'] = tab['Totaal'].astype(int)
                 tab.insert(0, 'Positie', range(1, len(tab) + 1))
                 st.table(tab,hide_index=True)
-        with col2:
-            st.write("### Uitslag KNF Tour Teams")
-            tab = dfEtappesKNF[['Team',etap]].sort_values(by=etap,ascending=False)
-            tab.rename(columns={etap: 'Punten'}, inplace=True)
-            tab.insert(0, 'Positie', range(1, len(tab) + 1))
-            st.table(tab,hide_index=True)
+            with col2:
+                st.write("### Uitslag KNF Tour Teams")
+                tab = dfEtappesKNF[['Team',etap]].sort_values(by=etap,ascending=False)
+                tab.rename(columns={etap: 'Punten'}, inplace=True)
+                tab.insert(0, 'Positie', range(1, len(tab) + 1))
+                st.table(tab,hide_index=True)
     else:
         st.write('Deze etappe is nog niet gereden')
 
