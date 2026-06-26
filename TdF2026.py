@@ -78,6 +78,12 @@ with tab1:
             st.subheader(f"{top1['Team']}")
             st.write(f"**{top1['Totaal']} pt**")
             st.write("</div>", unsafe_allow_html=True)
+
+            try:
+                teamLogo = Image.open(top1['Team'] + ".png")
+                col1.image(teamLogo, use_column_width=False)
+            except:
+                col1.write('No team logo available yet')
     
     with col2:
         if top2 is not None:
