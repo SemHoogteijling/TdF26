@@ -196,7 +196,8 @@ with tab3:
 
     try:
         teamLogo = Image.open(radioTeam + ".png")
-        col1.image(teamLogo, use_column_width=True)
+        links, midden, rechts = st.columns([1, 2, 1])
+        midden.image(teamLogo, use_column_width=True)
     except:
         col1.write('No team logo available yet')
 
