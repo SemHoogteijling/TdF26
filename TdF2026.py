@@ -116,6 +116,7 @@ with tab1:
                 
 
     st.write("---") # Visueel lijntje tussen de kaarten en de tabel
+    tab.insert(0, 'Positie', range(1, len(tab) + 1))
     st.write("### Volledige Stand")
     st.table(tab, hide_index=True)
 
@@ -163,11 +164,13 @@ with tab2:
             tab['Punten'] = tab['Punten'].astype(int)
             tab['Jongeren Bonus'] = tab['Jongeren Bonus'].astype('Int64')
             tab['Totaal'] = tab['Totaal'].astype(int)
+            tab.insert(0, 'Positie', range(1, len(tab) + 1))
             st.table(tab,hide_index=True)
     
             st.write("### Uitslag KNF Tour Teams")
             tab = dfEtappesKNF[['Team',etap]].sort_values(by=etap,ascending=False)
             tab.rename(columns={etap: 'Punten'}, inplace=True)
+            tab.insert(0, 'Positie', range(1, len(tab) + 1))
             st.table(tab,hide_index=True)
         else:
             st.write('Deze etappe is nog niet gereden')
