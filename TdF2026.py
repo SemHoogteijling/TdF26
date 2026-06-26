@@ -189,15 +189,15 @@ with tab3:
     buff0,col1, buff1,col2= st.columns([.1,5,1.5,5])
 
     with col1:
-    teams = dfTeams.columns
-    radioTeam = st.selectbox('Select team:', teams)
-    dfTeam = dfTeams[[radioTeam]]
-    try:
-        teamLogo = Image.open(radioTeam + ".png")
-        links, midden, rechts = st.columns([1, 2, 1])
-        midden.image(teamLogo, use_column_width=True)
-    except:
-        st.write('No team logo available yet')
+        teams = dfTeams.columns
+        radioTeam = st.selectbox('Select team:', teams)
+        dfTeam = dfTeams[[radioTeam]]
+        try:
+            teamLogo = Image.open(radioTeam + ".png")
+            links, midden, rechts = st.columns([1, 2, 1])
+            midden.image(teamLogo, use_column_width=True)
+        except:
+            st.write('No team logo available yet')
         
     col2.table(dfTeam)
 
