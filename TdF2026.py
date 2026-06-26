@@ -167,7 +167,7 @@ with tab2:
                 tab.insert(0, 'Positie', range(1, len(tab) + 1))
                 st.table(tab,hide_index=True)
             with col2:
-                st.write("### Uitslag KNF Tour Teams")
+                st.write("### Etappe uitslag KNF Tour Teams")
                 tab = dfEtappesKNF[['Team',etap]].sort_values(by=etap,ascending=False)
                 tab.rename(columns={etap: 'Punten'}, inplace=True)
                 tab.insert(0, 'Positie', range(1, len(tab) + 1))
