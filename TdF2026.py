@@ -50,7 +50,14 @@ logo = Image.open(r"logo.png")
 col1.image(logo, use_column_width=True)
 col2.image(header, use_column_width=True)
 
-st.write (dfTekst['Teksten'].iloc[0])
+st.write(dfTekst['Teksten'].iloc[0])
+extra_tekst = dfTekst['Teksten'].iloc[1]
+if extra_tekst:
+    st.write(extra_tekst)
+
+etappe_tekst = dfTekst['Etappes_tekst'].dropna()
+if not etappe_tekst.empty:
+    st.write(schone_serie.iloc[-1])
 
 tab1, tab2, tab3, tab4 = st.tabs(["Stand", "Etappes", "Teams","Uitleg"])
 
