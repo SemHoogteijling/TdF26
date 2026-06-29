@@ -57,7 +57,7 @@ if extra_tekst:
 
 etappe_tekst = dfTekst['Etappes_tekst'].dropna()
 if not etappe_tekst.empty:
-    st.write(schone_serie.iloc[-1])
+    st.write(etappe_tekst.iloc[-1])
 
 tab1, tab2, tab3, tab4 = st.tabs(["Stand", "Etappes", "Teams","Uitleg"])
 
