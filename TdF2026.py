@@ -172,8 +172,8 @@ with tab2:
                 tab.rename(columns={etap: 'Punten'}, inplace=True)
                 tab.insert(0, 'Positie', range(1, len(tab) + 1))
                 st.table(tab,hide_index=True)
-    else:
-        st.write('Deze etappe is nog niet gereden')
+        else:
+            st.write('Deze etappe is nog niet gereden')
 
 
 with tab3:
