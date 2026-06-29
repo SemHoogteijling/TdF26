@@ -52,7 +52,7 @@ col2.image(header, use_column_width=True)
 
 st.write(dfTekst['Teksten'].iloc[0])
 extra_tekst = dfTekst['Teksten'].iloc[1]
-if extra_tekst:
+if isinstance(extra_tekst, str):
     st.write(extra_tekst)
 
 etappe_tekst = dfTekst['Etappes_tekst'].dropna()
