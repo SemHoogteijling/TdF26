@@ -130,7 +130,16 @@ with tab1:
 
     st.write("---")
     st.write("### Scoreverloop per Etappe")
-    
+        etappe_kolommen = [col for col in dfEtappesKNF.columns if col not in ['Team', 'Totaal']]
+
+    df_plot = dfEtappesKNF.set_index('Team')[etappe_kolommen]
+    df_cumulatief = df_plot.cumsum(axis=1)
+    df_grafiek = df_cumulatief.T
+    df_grafiek.index = pd.CategoricalIndex(
+        df_grafiek.index,
+        categories=df_grafiek.index,
+        ordered=True
+    )
     df_reset = df_grafiek.reset_index().melt(id_vars='index', var_name='Team', value_name='Punten')
     df_reset.rename(columns={'index': 'Etappe'}, inplace=True)
 
