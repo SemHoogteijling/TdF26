@@ -143,18 +143,18 @@ with tab1:
     df_reset = df_grafiek.reset_index().melt(id_vars='index', var_name='Team', value_name='Punten')
     df_reset.rename(columns={'index': 'Etappe'}, inplace=True)
 
-    chart = alt.Chart(df_reset).mark_line().encode(
+    chart = alt.Chart(df_reset).mark_line(point=True).encode( 
         x=alt.X('Etappe', title='Etappe'),
-        y=alt.Y('Punten', title='Cumulatieve punten'), # Y-label aangepast
+        y=alt.Y('Punten', title='Cumulatieve punten'),
         color='Team',
-        tooltip=['Etappe', 'Team', 'Punten']
+        tooltip=['Etappe', 'Team', 'Punten'] 
     ).properties(
         width='container',
         height=500
     ).configure_legend(
         orient='bottom',
-        direction='vertical', # Verander naar 'vertical' zodat kolommen werken
-        columns=5,            # Bepaal hier hoeveel teams je per rij wilt hebben
+        direction='vertical',
+        columns=5,
         title=None
     ).interactive()
     
