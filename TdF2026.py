@@ -154,7 +154,7 @@ with tab1:
     ).configure_legend(
         orient='bottom',
         direction='vertical', # Verander naar 'vertical' zodat kolommen werken
-        columns=4,            # Bepaal hier hoeveel teams je per rij wilt hebben
+        columns=5,            # Bepaal hier hoeveel teams je per rij wilt hebben
         title=None
     ).interactive()
     
