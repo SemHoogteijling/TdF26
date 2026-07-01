@@ -144,13 +144,17 @@ with tab1:
     df_reset.rename(columns={'index': 'Etappe'}, inplace=True)
 
     chart = alt.Chart(df_reset).mark_line().encode(
-        x='Etappe',
-        y='Punten',
+        x=alt.X('Etappe', title='Etappe'),
+        y=alt.Y('Punten', title='Cumulatieve punten'), # Y-label aangepast
         color='Team',
         tooltip=['Etappe', 'Team', 'Punten']
     ).properties(
-        width='container',  # Breedte past zich aan de kolom aan
-        height=500          # Pas dit getal aan voor de gewenste hoogte (bijv. 500 of 600)
+        width='container',
+        height=500
+    ).configure_legend(
+        orient='bottom',    # Plaatst de legenda onder de grafiek
+        direction='horizontal', # Zorgt dat de legenda items horizontaal naast elkaar staan
+        title=None          # Optioneel: verbergt de titel 'Team' boven de legenda
     ).interactive()
     
     st.altair_chart(chart, use_container_width=True)
