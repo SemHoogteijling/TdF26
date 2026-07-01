@@ -130,7 +130,7 @@ with tab1:
 
     st.write("---")
     st.write("### Scoreverloop per Etappe")
-        etappe_kolommen = [col for col in dfEtappesKNF.columns if col not in ['Team', 'Totaal']]
+    etappe_kolommen = [col for col in dfEtappesKNF.columns if col not in ['Team', 'Totaal']]
 
     df_plot = dfEtappesKNF.set_index('Team')[etappe_kolommen]
     df_cumulatief = df_plot.cumsum(axis=1)
