@@ -17,6 +17,7 @@ from PIL import Image
 from io import BytesIO
 import re
 import requests
+import altair as alt
 
 st.set_page_config(layout="wide")
 
