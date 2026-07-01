@@ -150,7 +150,7 @@ with tab1:
         tooltip=['Etappe', 'Team', 'Punten'] 
     ).properties(
         width='container',
-        height=500
+        height=600
     ).configure_legend(
         orient='bottom',
         direction='vertical',
