@@ -143,24 +143,20 @@ with tab1:
     df_reset = df_grafiek.reset_index().melt(id_vars='index', var_name='Team', value_name='Punten')
     df_reset.rename(columns={'index': 'Etappe'}, inplace=True)
 
-    chart = alt.Chart(df_reset).mark_line(point=True).encode(
-        x=alt.X('Etappe', title='Etappe'),
-        y=alt.Y('Punten', 
-                title='Cumulatieve punten',  # Dit moet de titel tonen
-                axis=alt.Axis(titleFontSize=12, titlePadding=10)), # Zorgt dat de titel ruimte krijgt
+    chart = alt.Chart(df_reset).mark_line().encode(
+        x='Etappe',
+        y='Punten',
         color='Team',
         tooltip=['Etappe', 'Team', 'Punten']
     ).properties(
-        width='container',
-        height=500
+        width='container',  # Breedte past zich aan de kolom aan
+        height=500          # Pas dit getal aan voor de gewenste hoogte (bijv. 500 of 600)
     ).configure_legend(
         orient='bottom',
         direction='vertical',
         columns=5,
         title=None
     ).interactive()
-    
-    st.altair_chart(chart, use_container_width=True)
     
     st.altair_chart(chart, use_container_width=True)
 
