@@ -150,7 +150,7 @@ with tab1:
         tooltip=['Etappe', 'Team', 'Punten']
     ).properties(
         width='container',  # Breedte past zich aan de kolom aan
-        height=400          # Pas dit getal aan voor de gewenste hoogte (bijv. 500 of 600)
+        height=500          # Pas dit getal aan voor de gewenste hoogte (bijv. 500 of 600)
     ).interactive()
     
     st.altair_chart(chart, use_container_width=True)
