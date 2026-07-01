@@ -143,7 +143,7 @@ with tab1:
     df_reset = df_grafiek.reset_index().melt(id_vars='index', var_name='Team', value_name='Punten')
     df_reset.rename(columns={'index': 'Etappe'}, inplace=True)
 
-    chart = alt.Chart(df_reset).mark_line(point=True).encode( 
+    chart = alt.Chart(df_reset).mark_line().encode( 
         x=alt.X('Etappe', title='Etappe'),
         y=alt.Y('Punten', title='Cumulatieve punten'),
         color='Team',
