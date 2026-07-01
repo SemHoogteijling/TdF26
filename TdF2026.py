@@ -140,6 +140,23 @@ with tab1:
     )
     st.line_chart(df_grafiek,x_label='Etappe',y_label='Cumulatieve Punten')
 
+    df_reset = df_grafiek.reset_index().melt(id_vars='index', var_name='Team', value_name='Punten')
+    df_reset.rename(columns={'index': 'Etappe'}, inplace=True)
+    
+    # 2. Maak de chart aan
+    chart = alt.Chart(df_reset).mark_line().encode(
+        x='Etappe',
+        y='Punten',
+        color='Team',
+        tooltip=['Etappe', 'Team', 'Punten']
+    ).properties(
+        width='container',  # Breedte past zich aan de kolom aan
+        height=500          # Pas dit getal aan voor de gewenste hoogte (bijv. 500 of 600)
+    ).interactive()
+    
+    # 3. Toon de grafiek
+    st.altair_chart(chart, use_container_width=True)
+
 with tab2:    
     st.write ("""
               # Etappes
