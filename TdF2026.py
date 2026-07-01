@@ -152,9 +152,10 @@ with tab1:
         width='container',
         height=500
     ).configure_legend(
-        orient='bottom',    # Plaatst de legenda onder de grafiek
-        direction='horizontal', # Zorgt dat de legenda items horizontaal naast elkaar staan
-        title=None          # Optioneel: verbergt de titel 'Team' boven de legenda
+        orient='bottom',
+        direction='vertical', # Verander naar 'vertical' zodat kolommen werken
+        columns=4,            # Bepaal hier hoeveel teams je per rij wilt hebben
+        title=None
     ).interactive()
     
     st.altair_chart(chart, use_container_width=True)
