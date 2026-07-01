@@ -147,7 +147,7 @@ with tab1:
         x='Etappe',
         y='Punten',
         color='Team',
-        tooltip=['Etappe', 'Team', 'Cumulatieve Punten']
+        tooltip=['Etappe', 'Team', 'Punten']
     ).properties(
         width='container',  # Breedte past zich aan de kolom aan
         height=400          # Pas dit getal aan voor de gewenste hoogte (bijv. 500 of 600)
