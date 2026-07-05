@@ -257,7 +257,7 @@ with tab3:
     buff0,col1, buff1,col2= st.columns([.1,5,1.5,5])
 
     with col1:
-        teams = dfTeams.columns
+        teams = sorted(dfTeams.columns)
         radioTeam = st.selectbox('Selecteer een team:', teams, index=None, placeholder="Teams")
         if radioTeam is not None:
             dfTeam = dfTeams[[radioTeam]]
