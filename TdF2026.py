@@ -44,6 +44,35 @@ url = f"https://docs.google.com/spreadsheets/d/{SHEET_ID}/export?format=csv&gid=
 dfLogos = pd.read_csv(url)
 
 #%%
+
+teams = [
+    "Team Visma", "De Kaasfabriek", "ChatGPT", "Peter Pan", "Bidonbrigade",
+    "Koersklakske", "Beulen en berggeiten", "Profusion naar de top",
+    "Waarom stemmen, die met de gele trui wint toch altijd",
+    "Grote molen, kleine molen, laat maar lekker waaien",
+    "Ja, zo kan ik het ook?!", "Teamnaam wordt geladen...", "No name",
+    "Spieren voor spieren", "The Sydney Spinners", "Vlammende start",
+    "Hyperscaler", "Falafel & Halloumi", "Henk", "Kijk omhoog",
+    "De co-piloot", "De Vliegende Brabander", "Ik wil een gele trui",
+    "In de tegenaanval", "Les dérailleurs", "L'Esprit de la Seine",
+    "De mini matadoren", "Fresh Legs Momentum", "De bolletjes brigade",
+    "Kopgroep zonder Kop", "Col du Futur", "Vers Bloed, Oud IJzer"
+]
+
+logos = [
+    "logo1.png", "logo2.png", "logo3.png", "logo4.png",
+    "logo5.png", "logo6.png", "logo7.png", "logo8.png", "logo9.png",
+    "logo10.png", "logo11.png", "logo12.png", "logo13.png", "logo14.png",
+    "logo15.png", "logo16.png", "logo17.png", "logo18.png", "logo19.png",
+    "logo20.png", "logo21.png", "logo22.png", "logo23.png", "logo24.png",
+    "logo25.png", "logo26.png", "logo27.png", "logo28.png", "logo29.png",
+    "logo30.png", "logo31.png", "logo32.png"
+]
+
+teampng = dict(zip(teams, logos))
+
+
+#%%
 buff0,col1, buff1,col2= st.columns([.1,1,.5,8])
 header = Image.open(r"header.png")
 logo = Image.open(r"logo.png")
@@ -89,6 +118,7 @@ with tab1:
 
             try:
                 teamLogo = Image.open(top1['Team'] + ".png")
+                teamLogo = Image.open(teampng[top1['Team']])
                 sub_kolom1, sub_kolom2,sub_kolom3 = st.columns(3)
                 sub_kolom1.image(teamLogo, use_container_width=True)
             except:
