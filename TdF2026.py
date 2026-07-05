@@ -209,7 +209,7 @@ with tab3:
               """
               )
     allLogos = Image.open(r"allelogos (1).png")
-    st.image(allLogo, use_column_width=True)
+    st.image(allLogos, use_column_width=True)
 
 #    fileID = dfLogos[dfLogos['Team']=='Algemeen']['fileID'].iloc[0]
 #    url = f"https://docs.google.com/uc?export=download&id={fileID}"
