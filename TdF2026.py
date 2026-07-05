@@ -117,8 +117,8 @@ with tab1:
             st.write("</div>", unsafe_allow_html=True)
 
             try:
-                teamLogo = Image.open(top1['Team'] + ".png")
-                st.write(top1['Team'] + ".png")
+                # teamLogo = Image.open(top1['Team'] + ".png")
+                # st.write(top1['Team'] + ".png")
                 teamLogo = Image.open(teampng[top1['Team']])
                 st.write(teampng[top1['Team']])
                 sub_kolom1, sub_kolom2,sub_kolom3 = st.columns(3)
