@@ -146,7 +146,7 @@ with tab1:
             st.write("</div>", unsafe_allow_html=True)
 
             try:
-                teamLogo = Image.open(teampng[top2['Team']])
+                teamLogo = Image.open(teampng[top3['Team']])
                 sub_kolom1, sub_kolom2,sub_kolom3 = st.columns(3)
                 sub_kolom1.image(teamLogo, use_container_width=True)
             except:
