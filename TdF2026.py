@@ -261,7 +261,7 @@ with tab3:
         radioTeam = st.selectbox('Selecteer een team:', teams, index=None, placeholder="Teams")
         if radioTeam is not None:
             dfTeam = dfTeams[[radioTeam]]
-            st.write(teampng[dfTeam])
+            st.write(radioTeam)
             st.write(teampng[radioTeam])
             try:
                 teamLogo = Image.open(teampng[radioTeam])
