@@ -117,16 +117,11 @@ with tab1:
             st.write("</div>", unsafe_allow_html=True)
 
             try:
-                # teamLogo = Image.open(top1['Team'] + ".png")
-                # st.write(top1['Team'] + ".png")
                 teamLogo = Image.open(teampng[top1['Team']])
-                st.write(teampng[top1['Team']])
                 sub_kolom1, sub_kolom2,sub_kolom3 = st.columns(3)
                 sub_kolom1.image(teamLogo, use_container_width=True)
             except:
                 col1.write('No team logo available yet')
-                col1.write(top1['Team'] + ".png")
-                col1.write(teampng[top1['Team']])
                 
     
     with col2:
@@ -137,7 +132,7 @@ with tab1:
             st.write("</div>", unsafe_allow_html=True)
 
             try:
-                teamLogo = Image.open(top2['Team'] + ".png")
+                teamLogo = Image.open(teampng[top2['Team']])
                 sub_kolom1, sub_kolom2,sub_kolom3 = st.columns(3)
                 sub_kolom1.image(teamLogo, use_container_width=True)
             except:
@@ -151,7 +146,7 @@ with tab1:
             st.write("</div>", unsafe_allow_html=True)
 
             try:
-                teamLogo = Image.open(top3['Team'] + ".png")
+                teamLogo = Image.open(teampng[top2['Team']])
                 sub_kolom1, sub_kolom2,sub_kolom3 = st.columns(3)
                 sub_kolom1.image(teamLogo, use_container_width=True)
             except:
@@ -261,7 +256,8 @@ with tab3:
         radioTeam = st.selectbox('Select team:', teams)
         dfTeam = dfTeams[[radioTeam]]
         try:
-            teamLogo = Image.open(radioTeam + ".png")
+            teamLogo = Image.open(teampng[radioTeam])
+            # teamLogo = Image.open(radioTeam + ".png")
             links, midden, rechts = st.columns([1, 2, 1])
             midden.image(teamLogo, use_column_width=True)
         except:
