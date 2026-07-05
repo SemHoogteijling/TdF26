@@ -125,6 +125,9 @@ with tab1:
                 sub_kolom1.image(teamLogo, use_container_width=True)
             except:
                 col1.write('No team logo available yet')
+                col1.write(top1['Team'] + ".png")
+                col1.write(teampng[top1['Team']])
+                
     
     with col2:
         if top2 is not None:
