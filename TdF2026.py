@@ -118,7 +118,9 @@ with tab1:
 
             try:
                 teamLogo = Image.open(top1['Team'] + ".png")
+                st.write(top1['Team'] + ".png")
                 teamLogo = Image.open(teampng[top1['Team']])
+                st.write(teampng[top1['Team']])
                 sub_kolom1, sub_kolom2,sub_kolom3 = st.columns(3)
                 sub_kolom1.image(teamLogo, use_container_width=True)
             except:
