@@ -45,7 +45,7 @@ dfLogos = pd.read_csv(url)
 
 #%%
 buff0,col1, buff1,col2= st.columns([.1,1,.5,8])
-header = Image.open(r"logo2.png")
+header = Image.open(r"header.png")
 logo = Image.open(r"logo.png")
 
 col1.image(logo, use_column_width=True)
@@ -208,13 +208,15 @@ with tab3:
               # Teams
               """
               )
+    allLogos = Image.open(r"allelogos (1).png")
+    st.image(allLogo, use_column_width=True)
 
-    fileID = dfLogos[dfLogos['Team']=='Algemeen']['fileID'].iloc[0]
-    url = f"https://docs.google.com/uc?export=download&id={fileID}"
-    response = requests.get(url)
-    if response.status_code == 200:
-        img = Image.open(BytesIO(response.content))
-        st.image(img)
+#    fileID = dfLogos[dfLogos['Team']=='Algemeen']['fileID'].iloc[0]
+#    url = f"https://docs.google.com/uc?export=download&id={fileID}"
+#    response = requests.get(url)
+#    if response.status_code == 200:
+#        img = Image.open(BytesIO(response.content))
+#        st.image(img)
     
     buff0,col1, buff1,col2= st.columns([.1,5,1.5,5])
 
