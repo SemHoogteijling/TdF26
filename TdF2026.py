@@ -88,6 +88,10 @@ if isinstance(extra_tekst, str):
 etappe_tekst = dfTekst['Etappes_tekst'].dropna()
 if not etappe_tekst.empty:
     st.write(etappe_tekst.iloc[-1])
+    cur_etap = str(len(etappe_tekst))
+else:
+    cur_etap = None
+    
 
 tab1, tab2, tab3, tab4 = st.tabs(["Stand", "Etappes", "Teams","Uitleg"])
 
@@ -201,6 +205,7 @@ with tab2:
         options=[str(i) for i in range(1, 22)],
         # format_func=lambda option: option_map[option],
         selection_mode="single",
+        default = cur_etap
     )
 
     if etap is not None:    
