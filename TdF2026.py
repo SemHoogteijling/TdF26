@@ -59,6 +59,7 @@ teams = [
     "Kopgroep zonder Kop", "Col du Futur", "Vers Bloed, Oud IJzer"
 ]
 
+teams = dfTeams.columns
 logos = [
     "logo1.png", "logo2.png", "logo3.png", "logo4.png",
     "logo5.png", "logo6.png", "logo7.png", "logo8.png", "logo9.png",
