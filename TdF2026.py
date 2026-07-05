@@ -258,17 +258,18 @@ with tab3:
 
     with col1:
         teams = dfTeams.columns
-        radioTeam = st.selectbox('Select team:', teams)
-        dfTeam = dfTeams[[radioTeam]]
-        try:
-            teamLogo = Image.open(teampng[radioTeam])
-            # teamLogo = Image.open(radioTeam + ".png")
-            links, midden, rechts = st.columns([1, 2, 1])
-            midden.image(teamLogo, use_column_width=True)
-        except:
-            st.write('No team logo available yet')
-        
-    col2.table(dfTeam)
+        radioTeam = st.selectbox('Selecteer een team:', teams, index=None, placeholder="Teams")
+        if radioTeam is not None:
+            dfTeam = dfTeams[[radioTeam]]
+            try:
+                teamLogo = Image.open(teampng[radioTeam])
+                # teamLogo = Image.open(radioTeam + ".png")
+                links, midden, rechts = st.columns([1, 2, 1])
+                midden.image(teamLogo, use_column_width=True)
+            except:
+                st.write('No team logo available yet')
+    if radioTeam is not None:    
+        col2.table(dfTeam)
 
 with tab4:
     st.write("""
