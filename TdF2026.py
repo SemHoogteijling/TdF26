@@ -67,7 +67,7 @@ logos = [
     "logo15.png", "logo16.png", "logo17.png", "logo18.png", "logo19.png",
     "logo20.png", "logo21.png", "logo22.png", "logo23.png", "logo24.png",
     "logo25.png", "logo26.png", "logo27.png", "logo28.png", "logo29.png",
-    "logo30.png", "logo31.png", "logo32.png"
+    "logo30.png", "logo31.png", "logo32.png","logo33.png","logo34.png"
 ]
 
 teampng = dict(zip(teams, logos))
