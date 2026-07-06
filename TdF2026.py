@@ -245,7 +245,7 @@ with tab3:
               """
               )
     allLogos = Image.open(r"allelogos (1).png")
-    buff0,col1, buff1 = st.columns([2,10,2])
+    buff0,col1, buff1 = st.columns([1,15,1])
     col1.image(allLogos, use_column_width=True)
 
 #    fileID = dfLogos[dfLogos['Team']=='Algemeen']['fileID'].iloc[0]
