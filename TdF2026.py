@@ -27,9 +27,15 @@ if 'df_store_temp' not in st.session_state:
 
 plt.rcParams['svg.fonttype'] = 'none'
 
-SHEET_ID = "17zM7Xsnej3p8JjcKzxmsmH-hdsbsWx4HsmzzN8BXNVM"
-url = f"https://docs.google.com/spreadsheets/d/{SHEET_ID}/export?format=csv&gid=638470902"
-dfTeams = pd.read_csv(url)
+@st.cache_data(ttl=3600)  # Ververst de data elke uur
+def get_data(url):
+    return pd.read_csv(url)
+
+#SHEET_ID = "17zM7Xsnej3p8JjcKzxmsmH-hdsbsWx4HsmzzN8BXNVM"
+#url = f"https://docs.google.com/spreadsheets/d/{SHEET_ID}/export?format=csv&gid=638470902"
+#dfTeams = pd.read_csv(url)
+
+dfTeams = get_data(f"https://docs.google.com/spreadsheets/d/17zM7Xsnej3p8JjcKzxmsmH-hdsbsWx4HsmzzN8BXNVM/export?format=csv&gid=638470902")
 
 url = f"https://docs.google.com/spreadsheets/d/{SHEET_ID}/export?format=csv&gid=592005"
 dfTekst = pd.read_csv(url)
