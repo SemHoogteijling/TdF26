@@ -31,7 +31,7 @@ plt.rcParams['svg.fonttype'] = 'none'
 def get_data(url):
     return pd.read_csv(url)
 
-#SHEET_ID = "17zM7Xsnej3p8JjcKzxmsmH-hdsbsWx4HsmzzN8BXNVM"
+SHEET_ID = "17zM7Xsnej3p8JjcKzxmsmH-hdsbsWx4HsmzzN8BXNVM"
 #url = f"https://docs.google.com/spreadsheets/d/{SHEET_ID}/export?format=csv&gid=638470902"
 #dfTeams = pd.read_csv(url)
 
