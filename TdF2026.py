@@ -249,7 +249,7 @@ with tab3:
         if radioTeam is not None:
             dfTeam = dfTeams[[radioTeam]]
             try:
-                teamLogo = Image.open(teampng[radioTeam])
+                teamLogo = get_image(teampng[radioTeam])
                 # teamLogo = Image.open(radioTeam + ".png")
                 links, midden, rechts = st.columns([1, 2, 1])
                 midden.image(teamLogo, use_column_width=True)
