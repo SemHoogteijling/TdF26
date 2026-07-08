@@ -31,46 +31,20 @@ plt.rcParams['svg.fonttype'] = 'none'
 def get_data(url):
     return pd.read_csv(url)
 
-#SHEET_ID = "17zM7Xsnej3p8JjcKzxmsmH-hdsbsWx4HsmzzN8BXNVM"
-#url = f"https://docs.google.com/spreadsheets/d/{SHEET_ID}/export?format=csv&gid=638470902"
-#dfTeams = pd.read_csv(url)
-
 dfTeams = get_data(f"https://docs.google.com/spreadsheets/d/17zM7Xsnej3p8JjcKzxmsmH-hdsbsWx4HsmzzN8BXNVM/export?format=csv&gid=638470902")
 dfTekst = get_data(f"https://docs.google.com/spreadsheets/d/17zM7Xsnej3p8JjcKzxmsmH-hdsbsWx4HsmzzN8BXNVM/export?format=csv&gid=592005")
 dfEtappesKNF = get_data(f"https://docs.google.com/spreadsheets/d/17zM7Xsnej3p8JjcKzxmsmH-hdsbsWx4HsmzzN8BXNVM/export?format=csv&gid=1587473803")
 dfEtappesUitslagen = get_data(f"https://docs.google.com/spreadsheets/d/17zM7Xsnej3p8JjcKzxmsmH-hdsbsWx4HsmzzN8BXNVM/export?format=csv&gid=450303227")
 dfLogos = get_data(f"https://docs.google.com/spreadsheets/d/17zM7Xsnej3p8JjcKzxmsmH-hdsbsWx4HsmzzN8BXNVM/export?format=csv&gid=826559667")
 
-#url = f"https://docs.google.com/spreadsheets/d/{SHEET_ID}/export?format=csv&gid=592005"
-#dfTekst = pd.read_csv(url)
+@st.cache_data
+def get_image(path):
+    return Image.open(path)
 
-#url = f"https://docs.google.com/spreadsheets/d/{SHEET_ID}/export?format=csv&gid=1587473803"
-#dfEtappesKNF = pd.read_csv(url)
-
-#url = f"https://docs.google.com/spreadsheets/d/{SHEET_ID}/export?format=csv&gid=450303227"
-#dfEtappesUitslagen = pd.read_csv(url)
-
-#url = f"https://docs.google.com/spreadsheets/d/{SHEET_ID}/export?format=csv&gid=826559667"
-#dfLogos = pd.read_csv(url)
-
-#%%
-
-teams = [
-    "Team Visma", "De Kaasfabriek", "ChatGPT", "Peter Pan", "Bidonbrigade",
-    "Koersklakske", "Beulen en berggeiten", "Profusion naar de top",
-    "Waarom stemmen, die met de gele trui wint toch altijd",
-    "Grote molen, kleine molen, laat maar lekker waaien",
-    "Ja, zo kan ik het ook?!", "Teamnaam wordt geladen...", "No name",
-    "Spieren voor spieren", "The Sydney Spinners", "Vlammende start",
-    "Hyperscaler", "Falafel & Halloumi", "Henk", "Kijk omhoog",
-    "De co-piloot", "De Vliegende Brabander", "Ik wil een gele trui",
-    "In de tegenaanval", "Les dérailleurs", "L'Esprit de la Seine",
-    "De mini matadoren", "Fresh Legs Momentum", "De bolletjes brigade",
-    "Kopgroep zonder Kop", "Col du Futur", "Vers Bloed, Oud IJzer"
-]
-
-teams = dfTeams.columns
-logos = [
+@st.cache_data
+def get_teampng(dfTeams):
+    teams = dfTeams.columns
+    logos = [
     "logo1.png", "logo2.png", "logo3.png", "logo4.png",
     "logo5.png", "logo6.png", "logo7.png", "logo8.png", "logo9.png",
     "logo10.png", "logo11.png", "logo12.png", "logo13.png", "logo14.png",
@@ -78,9 +52,9 @@ logos = [
     "logo20.png", "logo21.png", "logo22.png", "logo23.png", "logo24.png",
     "logo25.png", "logo26.png", "logo27.png", "logo28.png", "logo29.png",
     "logo30.png", "logo31.png", "logo32.png","logo33.png","logo34.png"
-]
-
-teampng = dict(zip(teams, logos))
+    ]   
+    return dict(zip(teams, logos))
+teampng = get_teampng(dfTeams)
 
 
 #%%
