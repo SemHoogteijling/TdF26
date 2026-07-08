@@ -60,6 +60,40 @@ def get_teampng(dfTeams):
     return dict(zip(teams, logos))
 teampng = get_teampng(dfTeams)
 
+@st.cache_data
+def get_scoreverloop_chart(dfEtappesKNF):
+    # 1. Data voorbereiding
+    etappe_kolommen = [col for col in dfEtappesKNF.columns if col not in ['Team', 'Totaal']]
+    df_plot = dfEtappesKNF.set_index('Team')[etappe_kolommen]
+    df_cumulatief = df_plot.cumsum(axis=1)
+    
+    # 2. Transformatie voor Altair
+    df_grafiek = df_cumulatief.T
+    df_grafiek.index = pd.CategoricalIndex(
+        df_grafiek.index,
+        categories=df_grafiek.index,
+        ordered=True
+    )
+    df_reset = df_grafiek.reset_index().melt(id_vars='index', var_name='Team', value_name='Punten')
+    df_reset.rename(columns={'index': 'Etappe'}, inplace=True)
+
+    # 3. Grafiek bouwen
+    chart = alt.Chart(df_reset).mark_line().encode(
+        x='Etappe',
+        y='Punten',
+        color='Team',
+        tooltip=['Etappe', 'Team', 'Punten']
+    ).properties(
+        width='container',
+        height=500
+    ).configure_legend(
+        orient='bottom',
+        direction='vertical',
+        columns=5,
+        title=None
+    ).interactive()
+    
+    return chart
 
 #%%
 buff0,col1, buff1,col2= st.columns([.1,1,.5,8])
@@ -151,35 +185,9 @@ with tab1:
 
     st.write("---")
     st.write("### Scoreverloop per Etappe")
-    etappe_kolommen = [col for col in dfEtappesKNF.columns if col not in ['Team', 'Totaal']]
-
-    df_plot = dfEtappesKNF.set_index('Team')[etappe_kolommen]
-    df_cumulatief = df_plot.cumsum(axis=1)
-    df_grafiek = df_cumulatief.T
-    df_grafiek.index = pd.CategoricalIndex(
-        df_grafiek.index,
-        categories=df_grafiek.index,
-        ordered=True
-    )
-    df_reset = df_grafiek.reset_index().melt(id_vars='index', var_name='Team', value_name='Punten')
-    df_reset.rename(columns={'index': 'Etappe'}, inplace=True)
-
-    chart = alt.Chart(df_reset).mark_line().encode(
-        x='Etappe',
-        y='Punten',
-        color='Team',
-        tooltip=['Etappe', 'Team', 'Punten']
-    ).properties(
-        width='container',  # Breedte past zich aan de kolom aan
-        height=500          # Pas dit getal aan voor de gewenste hoogte (bijv. 500 of 600)
-    ).configure_legend(
-        orient='bottom',
-        direction='vertical',
-        columns=5,
-        title=None
-    ).interactive()
-    
+    chart = get_scoreverloop_chart(dfEtappesKNF)
     st.altair_chart(chart, use_container_width=True)
+
 
 with tab2:    
     st.write ("""
