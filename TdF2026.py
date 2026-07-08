@@ -39,7 +39,9 @@ dfLogos = get_data(f"https://docs.google.com/spreadsheets/d/17zM7Xsnej3p8JjcKzxm
 
 @st.cache_data
 def get_image(path):
-    return Image.open(path)
+    img = Image.open(path)
+    img.thumbnail((800, 800)) 
+    return img
 
 logoKNF = get_image("logo.png")
 header = get_image("header.png")
