@@ -31,23 +31,27 @@ plt.rcParams['svg.fonttype'] = 'none'
 def get_data(url):
     return pd.read_csv(url)
 
-SHEET_ID = "17zM7Xsnej3p8JjcKzxmsmH-hdsbsWx4HsmzzN8BXNVM"
+#SHEET_ID = "17zM7Xsnej3p8JjcKzxmsmH-hdsbsWx4HsmzzN8BXNVM"
 #url = f"https://docs.google.com/spreadsheets/d/{SHEET_ID}/export?format=csv&gid=638470902"
 #dfTeams = pd.read_csv(url)
 
 dfTeams = get_data(f"https://docs.google.com/spreadsheets/d/17zM7Xsnej3p8JjcKzxmsmH-hdsbsWx4HsmzzN8BXNVM/export?format=csv&gid=638470902")
+dfTekst = get_data(f"https://docs.google.com/spreadsheets/d/17zM7Xsnej3p8JjcKzxmsmH-hdsbsWx4HsmzzN8BXNVM/export?format=csv&gid=592005")
+dfEtappesKNF = get_data(f"https://docs.google.com/spreadsheets/d/17zM7Xsnej3p8JjcKzxmsmH-hdsbsWx4HsmzzN8BXNVM/export?format=csv&gid=1587473803")
+dfEtappesUitslagen = get_data(f"https://docs.google.com/spreadsheets/d/17zM7Xsnej3p8JjcKzxmsmH-hdsbsWx4HsmzzN8BXNVM/export?format=csv&gid=450303227")
+dfLogos = get_data(f"https://docs.google.com/spreadsheets/d/17zM7Xsnej3p8JjcKzxmsmH-hdsbsWx4HsmzzN8BXNVM/export?format=csv&gid=826559667")
 
-url = f"https://docs.google.com/spreadsheets/d/{SHEET_ID}/export?format=csv&gid=592005"
-dfTekst = pd.read_csv(url)
+#url = f"https://docs.google.com/spreadsheets/d/{SHEET_ID}/export?format=csv&gid=592005"
+#dfTekst = pd.read_csv(url)
 
-url = f"https://docs.google.com/spreadsheets/d/{SHEET_ID}/export?format=csv&gid=1587473803"
-dfEtappesKNF = pd.read_csv(url)
+#url = f"https://docs.google.com/spreadsheets/d/{SHEET_ID}/export?format=csv&gid=1587473803"
+#dfEtappesKNF = pd.read_csv(url)
 
-url = f"https://docs.google.com/spreadsheets/d/{SHEET_ID}/export?format=csv&gid=450303227"
-dfEtappesUitslagen = pd.read_csv(url)
+#url = f"https://docs.google.com/spreadsheets/d/{SHEET_ID}/export?format=csv&gid=450303227"
+#dfEtappesUitslagen = pd.read_csv(url)
 
-url = f"https://docs.google.com/spreadsheets/d/{SHEET_ID}/export?format=csv&gid=826559667"
-dfLogos = pd.read_csv(url)
+#url = f"https://docs.google.com/spreadsheets/d/{SHEET_ID}/export?format=csv&gid=826559667"
+#dfLogos = pd.read_csv(url)
 
 #%%
 
