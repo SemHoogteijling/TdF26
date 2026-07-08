@@ -41,6 +41,10 @@ dfLogos = get_data(f"https://docs.google.com/spreadsheets/d/17zM7Xsnej3p8JjcKzxm
 def get_image(path):
     return Image.open(path)
 
+logoKNF = get_image("logo.png")
+header = get_image("header.png")
+
+
 @st.cache_data
 def get_teampng(dfTeams):
     teams = dfTeams.columns
@@ -59,10 +63,10 @@ teampng = get_teampng(dfTeams)
 
 #%%
 buff0,col1, buff1,col2= st.columns([.1,1,.5,8])
-header = Image.open(r"header.png")
-logo = Image.open(r"logo.png")
+#header = Image.open(r"header.png")
+#logo = Image.open(r"logo.png")
 
-col1.image(logo, use_column_width=True)
+col1.image(logoKNF, use_column_width=True)
 col2.image(header, use_column_width=True)
 
 st.write(dfTekst['Teksten'].iloc[0])
