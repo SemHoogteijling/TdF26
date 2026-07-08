@@ -63,8 +63,6 @@ teampng = get_teampng(dfTeams)
 
 #%%
 buff0,col1, buff1,col2= st.columns([.1,1,.5,8])
-#header = Image.open(r"header.png")
-#logo = Image.open(r"logo.png")
 
 col1.image(logoKNF, use_column_width=True)
 col2.image(header, use_column_width=True)
@@ -110,9 +108,9 @@ with tab1:
             st.write("</div>", unsafe_allow_html=True)
 
             try:
-                teamLogo = Image.open(teampng[top1['Team']])
+                teamLogo1 = get_image(teampng[top1['Team']])
                 sub_kolom1, sub_kolom2,sub_kolom3 = st.columns(3)
-                sub_kolom1.image(teamLogo, use_container_width=True)
+                sub_kolom1.image(teamLogo1, use_container_width=True)
             except:
                 col1.write('No team logo available yet')
                 
@@ -125,9 +123,9 @@ with tab1:
             st.write("</div>", unsafe_allow_html=True)
 
             try:
-                teamLogo = Image.open(teampng[top2['Team']])
+                teamLogo2 = get_image(teampng[top2['Team']])
                 sub_kolom1, sub_kolom2,sub_kolom3 = st.columns(3)
-                sub_kolom1.image(teamLogo, use_container_width=True)
+                sub_kolom1.image(teamLogo2, use_container_width=True)
             except:
                 col2.write('No team logo available yet')
     
@@ -139,9 +137,9 @@ with tab1:
             st.write("</div>", unsafe_allow_html=True)
 
             try:
-                teamLogo = Image.open(teampng[top3['Team']])
+                teamLogo3 = get_image(teampng[top3['Team']])
                 sub_kolom1, sub_kolom2,sub_kolom3 = st.columns(3)
-                sub_kolom1.image(teamLogo, use_container_width=True)
+                sub_kolom1.image(teamLogo3, use_container_width=True)
             except:
                 col3.write('No team logo available yet')
                 
@@ -232,7 +230,7 @@ with tab3:
               # Teams
               """
               )
-    allLogos = Image.open(r"allelogos (1).png")
+    allLogos = get_image("allelogos (1).png")
     buff0,col1, buff1 = st.columns([1,15,1])
     col1.image(allLogos, use_column_width=True)
 
