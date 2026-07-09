@@ -27,7 +27,7 @@ if 'df_store_temp' not in st.session_state:
 
 plt.rcParams['svg.fonttype'] = 'none'
 
-@st.cache_data(ttl=3600)  # Ververst de data elke uur
+@st.cache_data(ttl=30)  # Ververst de data elke uur
 def get_data(url):
     return pd.read_csv(url)
 
