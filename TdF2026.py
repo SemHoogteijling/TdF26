@@ -27,15 +27,45 @@ if 'df_store_temp' not in st.session_state:
 
 plt.rcParams['svg.fonttype'] = 'none'
 
-@st.cache_data(ttl=30)  # Ververst de data elke uur
-def get_data(url):
+@st.cache_data(ttl=45)  # Ververst de data elke 30s
+def get_data_regularly(url):
     return pd.read_csv(url)
 
-dfTeams = get_data(f"https://docs.google.com/spreadsheets/d/17zM7Xsnej3p8JjcKzxmsmH-hdsbsWx4HsmzzN8BXNVM/export?format=csv&gid=638470902")
-dfTekst = get_data(f"https://docs.google.com/spreadsheets/d/17zM7Xsnej3p8JjcKzxmsmH-hdsbsWx4HsmzzN8BXNVM/export?format=csv&gid=592005")
-dfEtappesKNF = get_data(f"https://docs.google.com/spreadsheets/d/17zM7Xsnej3p8JjcKzxmsmH-hdsbsWx4HsmzzN8BXNVM/export?format=csv&gid=1587473803")
-dfEtappesUitslagen = get_data(f"https://docs.google.com/spreadsheets/d/17zM7Xsnej3p8JjcKzxmsmH-hdsbsWx4HsmzzN8BXNVM/export?format=csv&gid=450303227")
+@st.cache_data(ttl=180)  # Ververst de data elke 3 min
+def get_data_regularly(url):
+    return pd.read_csv(url)
+
+@st.cache_data(ttl=45)  
+def get_data_Teams(url, dfUitvallers):
+    uitvallers_dict = dict(zip(dfUitvallers['Renner'], dfUitvallers['Tekst']))
+    def markeer_uitvaller(renner):
+        if isinstance(renner, str) and renner in uitvallers_dict:
+            return f"{renner} - {uitvallers_dict[renner]}"
+        return renner
+    df = pd.read_csv(url)
+    return df.map(markeer_uitvaller)
+
+@st.cache_data(ttl=45)  # Ververst de data elke 3 min
+def get_data_Teams(url,dfUitvallers):
+    uitvallers_dict = dict(zip(dfUitvallers['Renner'], dfUitvallers['Tekst']))
+    def markeer_uitvaller(renner):
+        if renner in uitvallers_dict:
+            return f"{renner} - uitgevallen {uitvallers_dict[renner]}"
+        return renner
+
+    df = pd.read_csv(url)
+    return dfTeams = df.applymap(markeer_uitvaller)
+
+dfUitvallers = get_data(f"https://docs.google.com/spreadsheets/d/17zM7Xsnej3p8JjcKzxmsmH-hdsbsWx4HsmzzN8BXNVM/export?format=csv&gid=1587473803")
+dfTeams = get_data_Teams(f"https://docs.google.com/spreadsheets/d/17zM7Xsnej3p8JjcKzxmsmH-hdsbsWx4HsmzzN8BXNVM/export?format=csv&gid=638470902",dfUitvallers)
+dfTekst = get_data_regularly(f"https://docs.google.com/spreadsheets/d/17zM7Xsnej3p8JjcKzxmsmH-hdsbsWx4HsmzzN8BXNVM/export?format=csv&gid=592005")
+dfEtappesKNF = get_data_regularly(f"https://docs.google.com/spreadsheets/d/17zM7Xsnej3p8JjcKzxmsmH-hdsbsWx4HsmzzN8BXNVM/export?format=csv&gid=1587473803")
+dfEtappesUitslagen = get_data_regularly(f"https://docs.google.com/spreadsheets/d/17zM7Xsnej3p8JjcKzxmsmH-hdsbsWx4HsmzzN8BXNVM/export?format=csv&gid=450303227")
 dfLogos = get_data(f"https://docs.google.com/spreadsheets/d/17zM7Xsnej3p8JjcKzxmsmH-hdsbsWx4HsmzzN8BXNVM/export?format=csv&gid=826559667")
+
+
+
+
 
 @st.cache_data
 def get_image(path):
