@@ -27,12 +27,12 @@ if 'df_store_temp' not in st.session_state:
 
 plt.rcParams['svg.fonttype'] = 'none'
 
-@st.cache_data(ttl=45)  # Ververst de data elke 30s
-def get_data_regularly(url):
-    return pd.read_csv(url)
-
 @st.cache_data(ttl=180)  # Ververst de data elke 3 min
 def get_data(url):
+    return pd.read_csv(url)
+
+@st.cache_data(ttl=45)  # Ververst de data elke 45s
+def get_data_regularly(url):
     return pd.read_csv(url)
 
 @st.cache_data(ttl=45)  
@@ -46,8 +46,8 @@ def get_data_Teams(url, dfUitvallers):
     return df.map(markeer_uitvaller)
 
 
-# dfUitvallers = get_data(f"https://docs.google.com/spreadsheets/d/17zM7Xsnej3p8JjcKzxmsmH-hdsbsWx4HsmzzN8BXNVM/export?format=csv&gid=1587473803")
-dfTeams = get_data_regularly(f"https://docs.google.com/spreadsheets/d/17zM7Xsnej3p8JjcKzxmsmH-hdsbsWx4HsmzzN8BXNVM/export?format=csv&gid=638470902")
+dfUitvallers = get_data(f"https://docs.google.com/spreadsheets/d/17zM7Xsnej3p8JjcKzxmsmH-hdsbsWx4HsmzzN8BXNVM/export?format=csv&gid=1839351920")
+dfTeams = get_data_Teams(f"https://docs.google.com/spreadsheets/d/17zM7Xsnej3p8JjcKzxmsmH-hdsbsWx4HsmzzN8BXNVM/export?format=csv&gid=638470902")
 dfTekst = get_data_regularly(f"https://docs.google.com/spreadsheets/d/17zM7Xsnej3p8JjcKzxmsmH-hdsbsWx4HsmzzN8BXNVM/export?format=csv&gid=592005")
 dfEtappesKNF = get_data_regularly(f"https://docs.google.com/spreadsheets/d/17zM7Xsnej3p8JjcKzxmsmH-hdsbsWx4HsmzzN8BXNVM/export?format=csv&gid=1587473803")
 dfEtappesUitslagen = get_data_regularly(f"https://docs.google.com/spreadsheets/d/17zM7Xsnej3p8JjcKzxmsmH-hdsbsWx4HsmzzN8BXNVM/export?format=csv&gid=450303227")
