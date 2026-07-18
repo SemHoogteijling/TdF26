@@ -32,7 +32,7 @@ def get_data_regularly(url):
     return pd.read_csv(url)
 
 @st.cache_data(ttl=180)  # Ververst de data elke 3 min
-def get_data_regularly(url):
+def get_data(url):
     return pd.read_csv(url)
 
 @st.cache_data(ttl=45)  
