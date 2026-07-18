@@ -46,7 +46,7 @@ def get_data_Teams(url, dfUitvallers):
     return df.map(markeer_uitvaller)
 
 
-% dfUitvallers = get_data(f"https://docs.google.com/spreadsheets/d/17zM7Xsnej3p8JjcKzxmsmH-hdsbsWx4HsmzzN8BXNVM/export?format=csv&gid=1587473803")
+# dfUitvallers = get_data(f"https://docs.google.com/spreadsheets/d/17zM7Xsnej3p8JjcKzxmsmH-hdsbsWx4HsmzzN8BXNVM/export?format=csv&gid=1587473803")
 dfTeams = get_data_regularly(f"https://docs.google.com/spreadsheets/d/17zM7Xsnej3p8JjcKzxmsmH-hdsbsWx4HsmzzN8BXNVM/export?format=csv&gid=638470902",dfUitvallers)
 dfTekst = get_data_regularly(f"https://docs.google.com/spreadsheets/d/17zM7Xsnej3p8JjcKzxmsmH-hdsbsWx4HsmzzN8BXNVM/export?format=csv&gid=592005")
 dfEtappesKNF = get_data_regularly(f"https://docs.google.com/spreadsheets/d/17zM7Xsnej3p8JjcKzxmsmH-hdsbsWx4HsmzzN8BXNVM/export?format=csv&gid=1587473803")
