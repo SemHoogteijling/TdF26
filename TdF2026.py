@@ -60,7 +60,7 @@ dfLogos = get_data(f"https://docs.google.com/spreadsheets/d/17zM7Xsnej3p8JjcKzxm
 @st.cache_data
 def get_image(path):
     img = Image.open(path)
-    img.thumbnail((1200, 1200)) 
+    img.thumbnail((1000, 1000)) 
     return img
 
 logoKNF = get_image("logo.png")
