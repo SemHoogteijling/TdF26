@@ -45,16 +45,6 @@ def get_data_Teams(url, dfUitvallers):
     df = pd.read_csv(url)
     return df.map(markeer_uitvaller)
 
-@st.cache_data(ttl=45)  # Ververst de data elke 3 min
-def get_data_Teams(url,dfUitvallers):
-    uitvallers_dict = dict(zip(dfUitvallers['Renner'], dfUitvallers['Tekst']))
-    def markeer_uitvaller(renner):
-        if renner in uitvallers_dict:
-            return f"{renner} - uitgevallen {uitvallers_dict[renner]}"
-        return renner
-
-    df = pd.read_csv(url)
-    return df.applymap(markeer_uitvaller)
 
 dfUitvallers = get_data(f"https://docs.google.com/spreadsheets/d/17zM7Xsnej3p8JjcKzxmsmH-hdsbsWx4HsmzzN8BXNVM/export?format=csv&gid=1587473803")
 dfTeams = get_data_Teams(f"https://docs.google.com/spreadsheets/d/17zM7Xsnej3p8JjcKzxmsmH-hdsbsWx4HsmzzN8BXNVM/export?format=csv&gid=638470902",dfUitvallers)
