@@ -259,9 +259,6 @@ with tab2:
         etap_int = 22
         tab = dfEtappesUitslagen.iloc[:10, (etap_int-1)*4:(etap_int)*4]
         if not tab['Algemeen klassement'].isna().any():
-            etappe_tekst = dfTekst[dfTekst['Etappe_nr']==etap_int]['Etappes_tekst'].iloc[0]
-            if isinstance(etappe_tekst, str):
-                st.write(etappe_tekst)
             st.write("---")
             col1,col2 = st.columns(2)
             with col1:                
