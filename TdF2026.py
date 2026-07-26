@@ -254,6 +254,34 @@ with tab2:
         else:
             st.write('Deze etappe is nog niet gereden')
 
+    if etap is not None and etap == 'Algemeen klassement':
+        st.write('## Algemeen klassement')
+        etap_int = 22
+        tab = dfEtappesUitslagen.iloc[:10, (etap_int-1)*4:(etap_int)*4]
+        if not tab['Algemeen klassement'].isna().any():
+            etappe_tekst = dfTekst[dfTekst['Etappe_nr']==etap_int]['Etappes_tekst'].iloc[0]
+            if isinstance(etappe_tekst, str):
+                st.write(etappe_tekst)
+            st.write("---")
+            col1,col2 = st.columns(2)
+            with col1:                
+                st.write("### Uitslag algemeen klassement")
+                tab = dfEtappesUitslagen.iloc[:10, (etap_int-1)*4:(etap_int)*4]
+                tab.columns = ['Etappe '+etap,'Punten klassement','Jongeren Bonus', 'Punten totaal']
+                tab['Punten klassement'] = tab['Punten etappe'].astype(int)
+                tab['Jongeren Bonus'] = tab['Jongeren Bonus'].astype('Int64')
+                tab['Punten totaal'] = tab['Punten totaal'].astype(int)
+                tab.insert(0, 'Positie', range(1, len(tab) + 1))
+                st.table(tab,hide_index=True)
+            with col2:
+                st.write("### Algemeen klassement uitslag KNF Tour Teams")
+                tab = dfEtappesKNF[['Team',etap]].sort_values(by=etap,ascending=False)
+                tab.rename(columns={etap: 'Punten'}, inplace=True)
+                tab.insert(0, 'Positie', range(1, len(tab) + 1))
+                st.table(tab,hide_index=True)
+        else:
+            st.write('Algemeen klassement nog niet bekend.')
+
 
 with tab3:
     st.write ("""
