@@ -219,13 +219,13 @@ with tab2:
     
     etap = st.segmented_control(
         "Etappes",
-        options=[str(i) for i in range(1, 22)],
+        options=[str(i) for i in range(1, 22)]+ ["Algemeen klassement"],
         # format_func=lambda option: option_map[option],
         selection_mode="single",
         default = cur_etap
     )
 
-    if etap is not None:    
+    if etap is not None and etap != 'Algemeen klassement':  
         etap_int = int(etap)
         st.write('## Etappe ' + etap + ': ' + dfTekst[dfTekst['Etappe_nr']==etap_int]['Etappe_naam'].iloc[0] + ' ' + dfTekst[dfTekst['Etappe_nr']==etap_int]['Etappe_datum'].iloc[0])
         
