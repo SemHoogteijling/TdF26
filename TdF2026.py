@@ -264,7 +264,7 @@ with tab2:
             with col1:                
                 st.write("### Uitslag algemeen klassement")
                 tab = dfEtappesUitslagen.iloc[:10, (etap_int-1)*4:(etap_int)*4]
-                tab.columns = ['Etappe '+etap,'Punten klassement','Jongeren Bonus', 'Punten totaal']
+                tab.columns = [etap,'Punten klassement','Jongeren Bonus', 'Punten totaal']
                 tab['Punten klassement'] = tab['Punten klassement'].astype(int)
                 tab['Jongeren Bonus'] = tab['Jongeren Bonus'].astype('Int64')
                 tab['Punten totaal'] = tab['Punten totaal'].astype(int)
