@@ -120,8 +120,8 @@ def get_scoreverloop_chart(dfEtappesKNF):
 #%%
 buff0,col1, buff1,col2= st.columns([.1,1,.5,8])
 
-col1.image(logoKNF, use_column_width=True)
-col2.image(header, use_column_width=True)
+col1.image(logoKNF, use_container_width=True)
+col2.image(header, use_container_width=True)
 
 st.write(dfTekst['Teksten'].iloc[0])
 extra_tekst = dfTekst['Teksten'].iloc[1]
@@ -287,7 +287,7 @@ with tab3:
               )
     allLogos = get_image("allelogos (1).png")
     buff0,col1, buff1 = st.columns([1,15,1])
-    col1.image(allLogos, use_column_width=True)
+    col1.image(allLogos, use_container_width=True)
 
 #    fileID = dfLogos[dfLogos['Team']=='Algemeen']['fileID'].iloc[0]
 #    url = f"https://docs.google.com/uc?export=download&id={fileID}"
@@ -307,7 +307,7 @@ with tab3:
                 teamLogo = get_image(teampng[radioTeam])
                 # teamLogo = Image.open(radioTeam + ".png")
                 links, midden, rechts = st.columns([1, 2, 1])
-                midden.image(teamLogo, use_column_width=True)
+                midden.image(teamLogo, use_container_width=True)
             except:
                 st.write('No team logo available yet')
     if radioTeam is not None:    
